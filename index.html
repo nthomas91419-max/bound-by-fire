@@ -17,8 +17,10 @@
       min-height: 100vh;
       background: #050505;
       font-family: Georgia, "Times New Roman", serif;
-      overflow: hidden;
+      color: #f3e7d3;
     }
+
+    /* TITLE SCREEN */
 
     #titleScreen {
       min-height: 100vh;
@@ -38,12 +40,11 @@
       justify-content: center;
       align-items: flex-end;
 
-      padding-bottom: 8vh;
+      padding: 40px 20px 8vh;
     }
 
     #enterButton {
-      background: rgba(35, 8, 4, 0.85);
-
+      background: rgba(35, 8, 4, 0.88);
       color: #f3c985;
 
       border: 1px solid #d77a32;
@@ -66,12 +67,14 @@
 
     #enterButton:hover {
       background: rgba(115, 28, 12, 0.95);
-
       transform: scale(1.05);
 
       box-shadow:
         0 0 30px rgba(255, 90, 20, 0.7);
     }
+
+
+    /* CHARACTER CREATOR */
 
     #characterScreen {
       min-height: 100vh;
@@ -84,25 +87,21 @@
           #050505
         );
 
-      color: #f3e7d3;
-
       display: none;
 
       justify-content: center;
       align-items: center;
 
-      text-align: center;
-
-      padding: 30px;
+      padding: 40px 20px;
     }
 
     .character-card {
       width: 100%;
-      max-width: 650px;
+      max-width: 760px;
 
       border: 1px solid #7d3d24;
 
-      background: rgba(10, 5, 4, 0.92);
+      background: rgba(10, 5, 4, 0.94);
 
       padding: 45px;
 
@@ -111,22 +110,24 @@
     }
 
     .character-card h2 {
+      text-align: center;
+
       color: #e7b56c;
 
       font-size: 38px;
 
       letter-spacing: 5px;
-
       text-transform: uppercase;
 
-      margin-bottom: 15px;
+      margin-bottom: 12px;
     }
 
-    .character-card p {
+    .intro {
+      text-align: center;
+
       color: #c8b6a0;
 
       font-size: 18px;
-
       line-height: 1.6;
 
       margin-bottom: 35px;
@@ -135,14 +136,11 @@
     label {
       display: block;
 
-      text-align: left;
-
       color: #e7b56c;
 
       margin-bottom: 8px;
 
       letter-spacing: 2px;
-
       text-transform: uppercase;
 
       font-size: 13px;
@@ -152,8 +150,6 @@
       width: 100%;
 
       padding: 14px;
-
-      margin-bottom: 25px;
 
       background: #120b09;
 
@@ -165,6 +161,121 @@
 
       font-family: Georgia, "Times New Roman", serif;
     }
+
+    input:focus {
+      outline: none;
+
+      border-color: #d77a32;
+
+      box-shadow:
+        0 0 10px rgba(215, 122, 50, 0.25);
+    }
+
+
+    /* NAME FORGE */
+
+    .forge-section {
+      margin-top: 30px;
+
+      padding-top: 28px;
+
+      border-top: 1px solid #442116;
+    }
+
+    .forge-title {
+      color: #e7b56c;
+
+      letter-spacing: 3px;
+
+      text-transform: uppercase;
+
+      text-align: center;
+
+      font-size: 15px;
+
+      margin-bottom: 8px;
+    }
+
+    .forge-description {
+      color: #9f8c7b;
+
+      text-align: center;
+
+      font-style: italic;
+
+      line-height: 1.5;
+
+      margin-bottom: 20px;
+    }
+
+    .name-styles {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 10px;
+
+      margin-bottom: 18px;
+    }
+
+    .style-button {
+      background: #120b09;
+
+      color: #d9c3a4;
+
+      border: 1px solid #63321f;
+
+      padding: 12px 8px;
+
+      font-family: Georgia, "Times New Roman", serif;
+
+      letter-spacing: 1px;
+
+      text-transform: uppercase;
+
+      cursor: pointer;
+
+      transition: 0.2s;
+    }
+
+    .style-button:hover,
+    .style-button.active {
+      background: #572010;
+
+      color: #ffd59a;
+
+      border-color: #d77a32;
+    }
+
+    #forgeButton {
+      width: 100%;
+
+      background: transparent;
+
+      color: #e7b56c;
+
+      border: 1px solid #7d3d24;
+
+      padding: 13px;
+
+      font-family: Georgia, "Times New Roman", serif;
+
+      letter-spacing: 3px;
+
+      text-transform: uppercase;
+
+      cursor: pointer;
+
+      margin-bottom: 28px;
+    }
+
+    #forgeButton:hover {
+      background: #27100b;
+    }
+
+
+    /* CONTINUE */
 
     #continueButton {
       width: 100%;
@@ -186,6 +297,8 @@
       font-size: 16px;
 
       cursor: pointer;
+
+      transition: 0.2s;
     }
 
     #continueButton:hover {
@@ -193,7 +306,9 @@
     }
 
     #welcomeMessage {
-      margin-top: 25px;
+      text-align: center;
+
+      margin-top: 22px;
 
       color: #e7b56c;
 
@@ -202,11 +317,10 @@
       min-height: 30px;
     }
 
-    @media (max-width: 700px) {
 
-      #titleScreen {
-        background-position: center;
-      }
+    /* MOBILE */
+
+    @media (max-width: 700px) {
 
       #enterButton {
         padding: 15px 28px;
@@ -216,12 +330,22 @@
       .character-card {
         padding: 30px 20px;
       }
+
+      .character-card h2 {
+        font-size: 28px;
+      }
+
+      .name-styles {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
     }
   </style>
 </head>
 
 
 <body>
+
 
   <!-- TITLE SCREEN -->
 
@@ -234,6 +358,7 @@
   </section>
 
 
+
   <!-- CHARACTER CREATION -->
 
   <section id="characterScreen">
@@ -242,10 +367,11 @@
 
       <h2>Create Your Rider</h2>
 
-      <p>
-        Before the dragons know your name,
-        the trials must discover who you are.
+      <p class="intro">
+        Every rider enters nameless to the dragons.
+        Choose the name they will remember.
       </p>
+
 
       <label for="riderName">
         Rider Name
@@ -254,13 +380,75 @@
       <input
         type="text"
         id="riderName"
-        placeholder="Enter your name"
-        maxlength="30"
+        placeholder="Enter your own name..."
+        maxlength="40"
+        autocomplete="off"
       >
 
-      <button id="continueButton">
-        Begin Your Story
+
+      <div class="forge-section">
+
+        <div class="forge-title">
+          Forge a Rider Name
+        </div>
+
+        <p class="forge-description">
+          Let the old kingdoms choose a name for you.
+        </p>
+
+
+        <div class="name-styles">
+
+          <button
+            class="style-button"
+            data-style="gothic"
+            type="button">
+            Gothic
+          </button>
+
+          <button
+            class="style-button"
+            data-style="nordic"
+            type="button">
+            Nordic
+          </button>
+
+          <button
+            class="style-button"
+            data-style="arcane"
+            type="button">
+            Arcane
+          </button>
+
+          <button
+            class="style-button"
+            data-style="surprise"
+            type="button">
+            Surprise Me
+          </button>
+
+        </div>
+
+
+        <button
+          id="forgeButton"
+          type="button">
+
+          ↻ Forge Another
+
+        </button>
+
+      </div>
+
+
+      <button
+        id="continueButton"
+        type="button">
+
+        Enter the Academy
+
       </button>
+
 
       <div id="welcomeMessage"></div>
 
@@ -269,7 +457,12 @@
   </section>
 
 
+
   <script>
+
+    /* ---------------------------
+       SCREEN CONTROLS
+    ---------------------------- */
 
     const titleScreen =
       document.getElementById("titleScreen");
@@ -289,33 +482,308 @@
     const welcomeMessage =
       document.getElementById("welcomeMessage");
 
+    const forgeButton =
+      document.getElementById("forgeButton");
 
-    enterButton.addEventListener("click", function () {
-
-      titleScreen.style.display = "none";
-
-      characterScreen.style.display = "flex";
-
-    });
+    const styleButtons =
+      document.querySelectorAll(".style-button");
 
 
-    continueButton.addEventListener("click", function () {
+    let selectedStyle = "surprise";
 
-      const name = riderName.value.trim();
 
-      if (name === "") {
+    enterButton.addEventListener(
+      "click",
+      function () {
 
-        welcomeMessage.textContent =
-          "Every rider has a name.";
+        titleScreen.style.display = "none";
 
-        return;
+        characterScreen.style.display = "flex";
+
+      }
+    );
+
+
+
+    /* ---------------------------
+       NAME LIBRARIES
+    ---------------------------- */
+
+    const names = {
+
+      gothic: {
+
+        first: [
+          "Vesper",
+          "Lucien",
+          "Veyra",
+          "Morrin",
+          "Elara",
+          "Riven",
+          "Seraphine",
+          "Corvin",
+          "Nyx",
+          "Evren",
+          "Isolde",
+          "Cassian",
+          "Lenore",
+          "Dorian",
+          "Vara",
+          "Malric"
+        ],
+
+        last: [
+          "Thorne",
+          "Morcant",
+          "Voss",
+          "Blackmere",
+          "Rook",
+          "Graves",
+          "Duskryn",
+          "Veyne",
+          "Ravenscar",
+          "Ashmoor",
+          "Vale",
+          "Nightwell"
+        ]
+      },
+
+
+      nordic: {
+
+        first: [
+          "Eira",
+          "Soren",
+          "Astrid",
+          "Torren",
+          "Freya",
+          "Stellan",
+          "Kaia",
+          "Leif",
+          "Yrsa",
+          "Runa",
+          "Ivar",
+          "Sigrid",
+          "Kellan",
+          "Brynja",
+          "Hakon",
+          "Tova"
+        ],
+
+        last: [
+          "Skeld",
+          "Haldor",
+          "Vargan",
+          "Stormvein",
+          "Frost",
+          "Eldsen",
+          "Ravn",
+          "Halvik",
+          "Skarn",
+          "Veyr",
+          "Ironmark",
+          "Eirsson"
+        ]
+      },
+
+
+      arcane: {
+
+        first: [
+          "Kaelith",
+          "Aevra",
+          "Nyra",
+          "Vaelis",
+          "Elowyn",
+          "Theron",
+          "Saeryn",
+          "Astra",
+          "Caelen",
+          "Ilyra",
+          "Orien",
+          "Veylin",
+          "Lyssara",
+          "Aeron",
+          "Sylas",
+          "Maevyn"
+        ],
+
+        last: [
+          "Vael",
+          "Aevryn",
+          "Arveth",
+          "Elaris",
+          "Veyrin",
+          "Cael",
+          "Solryn",
+          "Aster",
+          "Thalen",
+          "Ilyth",
+          "Vaelor",
+          "Aethryn"
+        ]
       }
 
-      welcomeMessage.textContent =
-        name +
-        ", the dragons are already watching.";
+    };
 
-    });
+
+
+    /* ---------------------------
+       NAME GENERATOR
+    ---------------------------- */
+
+    function randomItem(array) {
+
+      return array[
+        Math.floor(
+          Math.random() * array.length
+        )
+      ];
+
+    }
+
+
+    function generateName(style) {
+
+      let chosenStyle = style;
+
+      if (style === "surprise") {
+
+        const availableStyles = [
+          "gothic",
+          "nordic",
+          "arcane"
+        ];
+
+        chosenStyle =
+          randomItem(availableStyles);
+
+      }
+
+
+      const first =
+        randomItem(
+          names[chosenStyle].first
+        );
+
+      const last =
+        randomItem(
+          names[chosenStyle].last
+        );
+
+
+      riderName.value =
+        first + " " + last;
+
+
+      welcomeMessage.textContent =
+        "The name feels strangely familiar.";
+
+    }
+
+
+
+    /* ---------------------------
+       STYLE BUTTONS
+    ---------------------------- */
+
+    styleButtons.forEach(
+      function (button) {
+
+        button.addEventListener(
+          "click",
+          function () {
+
+            selectedStyle =
+              button.dataset.style;
+
+
+            styleButtons.forEach(
+              function (item) {
+
+                item.classList.remove(
+                  "active"
+                );
+
+              }
+            );
+
+
+            button.classList.add(
+              "active"
+            );
+
+
+            generateName(
+              selectedStyle
+            );
+
+          }
+        );
+
+      }
+    );
+
+
+
+    /* ---------------------------
+       FORGE ANOTHER
+    ---------------------------- */
+
+    forgeButton.addEventListener(
+      "click",
+      function () {
+
+        generateName(
+          selectedStyle
+        );
+
+      }
+    );
+
+
+
+    /* ---------------------------
+       CONTINUE
+    ---------------------------- */
+
+    continueButton.addEventListener(
+      "click",
+      function () {
+
+        const name =
+          riderName.value.trim();
+
+
+        if (name === "") {
+
+          welcomeMessage.textContent =
+            "Every rider has a name.";
+
+          return;
+
+        }
+
+
+        /* Save rider for later chapters */
+
+        const rider = {
+          name: name
+        };
+
+
+        localStorage.setItem(
+          "boundByFireRider",
+          JSON.stringify(rider)
+        );
+
+
+        welcomeMessage.textContent =
+          name +
+          ", the dragons are already watching.";
+
+      }
+    );
 
   </script>
 
