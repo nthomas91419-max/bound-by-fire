@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Bound by Fire</title>
 
   <style>
@@ -20,18 +19,17 @@
       color: #f3e7d3;
     }
 
-    /* TITLE SCREEN */
+    button, input, select {
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    /* ---------- TITLE ---------- */
 
     #titleScreen {
       min-height: 100vh;
-
       background-image:
-        linear-gradient(
-          rgba(0,0,0,0.05),
-          rgba(0,0,0,0.25)
-        ),
+        linear-gradient(rgba(0,0,0,.05), rgba(0,0,0,.25)),
         url("bound-by-fire-title.png");
-
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -39,83 +37,73 @@
       display: flex;
       justify-content: center;
       align-items: flex-end;
-
       padding: 40px 20px 8vh;
     }
 
-    #enterButton {
-      background: rgba(35, 8, 4, 0.88);
-      color: #f3c985;
+    .main-button {
+      width: 100%;
+      padding: 16px;
 
+      background: #702410;
       border: 1px solid #d77a32;
+      color: #f7dfb2;
 
-      padding: 18px 48px;
-
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 18px;
-
-      letter-spacing: 5px;
+      letter-spacing: 4px;
       text-transform: uppercase;
+      font-size: 16px;
 
       cursor: pointer;
+      transition: .25s;
+    }
 
-      box-shadow:
-        0 0 15px rgba(255, 90, 20, 0.35);
+    .main-button:hover {
+      background: #9a3417;
+      box-shadow: 0 0 25px rgba(255,90,20,.35);
+    }
 
-      transition: 0.3s;
+    #enterButton {
+      width: auto;
+      padding: 18px 48px;
+      background: rgba(35,8,4,.88);
+      box-shadow: 0 0 15px rgba(255,90,20,.35);
     }
 
     #enterButton:hover {
-      background: rgba(115, 28, 12, 0.95);
       transform: scale(1.05);
-
-      box-shadow:
-        0 0 30px rgba(255, 90, 20, 0.7);
     }
 
+    /* ---------- SHARED SCREENS ---------- */
 
-    /* CHARACTER CREATOR */
-
-    #characterScreen {
+    .game-screen {
       min-height: 100vh;
 
       background:
-        radial-gradient(
-          circle at top,
-          #3b160d,
-          #120806 45%,
-          #050505
-        );
+        radial-gradient(circle at top, #3b160d, #120806 45%, #050505);
 
       display: none;
-
       justify-content: center;
       align-items: center;
 
       padding: 40px 20px;
     }
 
-    .character-card {
+    .card {
       width: 100%;
-      max-width: 760px;
+      max-width: 800px;
 
       border: 1px solid #7d3d24;
-
-      background: rgba(10, 5, 4, 0.94);
+      background: rgba(10,5,4,.95);
 
       padding: 45px;
 
-      box-shadow:
-        0 0 40px rgba(145, 45, 15, 0.25);
+      box-shadow: 0 0 40px rgba(145,45,15,.25);
     }
 
-    .character-card h2 {
+    h2 {
       text-align: center;
-
       color: #e7b56c;
 
       font-size: 38px;
-
       letter-spacing: 5px;
       text-transform: uppercase;
 
@@ -124,7 +112,6 @@
 
     .intro {
       text-align: center;
-
       color: #c8b6a0;
 
       font-size: 18px;
@@ -133,7 +120,7 @@
       margin-bottom: 35px;
     }
 
-    label {
+    label, .field-title {
       display: block;
 
       color: #e7b56c;
@@ -146,37 +133,28 @@
       font-size: 13px;
     }
 
-    input {
+    input, select {
       width: 100%;
-
       padding: 14px;
 
       background: #120b09;
-
       border: 1px solid #63321f;
 
       color: white;
-
       font-size: 18px;
 
-      font-family: Georgia, "Times New Roman", serif;
+      margin-bottom: 24px;
     }
 
-    input:focus {
+    input:focus, select:focus {
       outline: none;
-
       border-color: #d77a32;
-
-      box-shadow:
-        0 0 10px rgba(215, 122, 50, 0.25);
     }
 
-
-    /* NAME FORGE */
+    /* ---------- NAME FORGE ---------- */
 
     .forge-section {
-      margin-top: 30px;
-
+      margin-top: 6px;
       padding-top: 28px;
 
       border-top: 1px solid #442116;
@@ -184,186 +162,172 @@
 
     .forge-title {
       color: #e7b56c;
-
       letter-spacing: 3px;
-
       text-transform: uppercase;
-
       text-align: center;
-
       font-size: 15px;
-
       margin-bottom: 8px;
     }
 
     .forge-description {
       color: #9f8c7b;
-
       text-align: center;
-
       font-style: italic;
-
-      line-height: 1.5;
-
       margin-bottom: 20px;
     }
 
-    .name-styles {
+    .choice-grid {
       display: grid;
-
-      grid-template-columns:
-        repeat(4, 1fr);
-
+      grid-template-columns: repeat(4, 1fr);
       gap: 10px;
-
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
-    .style-button {
-      background: #120b09;
+    .choice-button {
+      min-height: 48px;
+      padding: 10px;
 
+      background: #120b09;
       color: #d9c3a4;
 
       border: 1px solid #63321f;
 
-      padding: 12px 8px;
-
-      font-family: Georgia, "Times New Roman", serif;
-
       letter-spacing: 1px;
-
       text-transform: uppercase;
 
       cursor: pointer;
-
-      transition: 0.2s;
+      transition: .2s;
     }
 
-    .style-button:hover,
-    .style-button.active {
+    .choice-button:hover,
+    .choice-button.active {
       background: #572010;
-
       color: #ffd59a;
-
       border-color: #d77a32;
     }
 
     #forgeButton {
       width: 100%;
+      padding: 13px;
+
+      margin-bottom: 28px;
 
       background: transparent;
-
       color: #e7b56c;
 
       border: 1px solid #7d3d24;
 
-      padding: 13px;
-
-      font-family: Georgia, "Times New Roman", serif;
-
       letter-spacing: 3px;
-
       text-transform: uppercase;
 
       cursor: pointer;
-
-      margin-bottom: 28px;
     }
 
     #forgeButton:hover {
       background: #27100b;
     }
 
+    #welcomeMessage, #appearanceMessage {
+      text-align: center;
+      margin-top: 20px;
 
-    /* CONTINUE */
+      color: #e7b56c;
+      font-style: italic;
 
-    #continueButton {
+      min-height: 25px;
+    }
+
+    /* ---------- APPEARANCE ---------- */
+
+    .appearance-section {
+      margin-bottom: 30px;
+    }
+
+    .appearance-section:not(:first-of-type) {
+      border-top: 1px solid #321810;
+      padding-top: 25px;
+    }
+
+    .appearance-section p {
+      color: #8f7d6f;
+      font-size: 14px;
+      margin-bottom: 15px;
+      font-style: italic;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .back-button {
       width: 100%;
 
-      padding: 16px;
+      margin-top: 12px;
+      padding: 12px;
 
-      background: #702410;
+      background: transparent;
+      color: #9f8c7b;
 
-      border: 1px solid #d77a32;
-
-      color: #f7dfb2;
-
-      font-family: Georgia, "Times New Roman", serif;
-
-      letter-spacing: 4px;
-
-      text-transform: uppercase;
-
-      font-size: 16px;
+      border: none;
 
       cursor: pointer;
 
-      transition: 0.2s;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
-    #continueButton:hover {
-      background: #9a3417;
-    }
-
-    #welcomeMessage {
-      text-align: center;
-
-      margin-top: 22px;
-
+    .back-button:hover {
       color: #e7b56c;
-
-      font-style: italic;
-
-      min-height: 30px;
     }
 
-
-    /* MOBILE */
+    /* ---------- MOBILE ---------- */
 
     @media (max-width: 700px) {
+      .card {
+        padding: 30px 20px;
+      }
+
+      h2 {
+        font-size: 27px;
+      }
+
+      .choice-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .two-column {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
 
       #enterButton {
         padding: 15px 28px;
         font-size: 14px;
       }
-
-      .character-card {
-        padding: 30px 20px;
-      }
-
-      .character-card h2 {
-        font-size: 28px;
-      }
-
-      .name-styles {
-        grid-template-columns:
-          repeat(2, 1fr);
-      }
     }
   </style>
 </head>
 
-
 <body>
-
 
   <!-- TITLE SCREEN -->
 
   <section id="titleScreen">
 
-    <button id="enterButton">
+    <button id="enterButton" class="main-button">
       Enter the Trials
     </button>
 
   </section>
 
 
+  <!-- NAME CREATOR -->
 
-  <!-- CHARACTER CREATION -->
+  <section id="nameScreen" class="game-screen">
 
-  <section id="characterScreen">
-
-    <div class="character-card">
+    <div class="card">
 
       <h2>Create Your Rider</h2>
 
@@ -372,19 +336,17 @@
         Choose the name they will remember.
       </p>
 
-
       <label for="riderName">
         Rider Name
       </label>
 
       <input
-        type="text"
         id="riderName"
-        placeholder="Enter your own name..."
+        type="text"
         maxlength="40"
+        placeholder="Enter your own name..."
         autocomplete="off"
       >
-
 
       <div class="forge-section">
 
@@ -396,59 +358,35 @@
           Let the old kingdoms choose a name for you.
         </p>
 
+        <div class="choice-grid">
 
-        <div class="name-styles">
-
-          <button
-            class="style-button"
-            data-style="gothic"
-            type="button">
+          <button class="choice-button name-style" data-style="gothic">
             Gothic
           </button>
 
-          <button
-            class="style-button"
-            data-style="nordic"
-            type="button">
+          <button class="choice-button name-style" data-style="nordic">
             Nordic
           </button>
 
-          <button
-            class="style-button"
-            data-style="arcane"
-            type="button">
+          <button class="choice-button name-style" data-style="arcane">
             Arcane
           </button>
 
-          <button
-            class="style-button"
-            data-style="surprise"
-            type="button">
+          <button class="choice-button name-style" data-style="surprise">
             Surprise Me
           </button>
 
         </div>
 
-
-        <button
-          id="forgeButton"
-          type="button">
-
+        <button id="forgeButton">
           ↻ Forge Another
-
         </button>
 
       </div>
 
-
-      <button
-        id="continueButton"
-        type="button">
-
-        Enter the Academy
-
+      <button id="continueToAppearance" class="main-button">
+        Continue
       </button>
-
 
       <div id="welcomeMessage"></div>
 
@@ -457,187 +395,374 @@
   </section>
 
 
+  <!-- APPEARANCE CREATOR -->
+
+  <section id="appearanceScreen" class="game-screen">
+
+    <div class="card">
+
+      <h2>Shape Your Rider</h2>
+
+      <p class="intro">
+        The dragons care little for appearances.
+        The living do.
+      </p>
+
+
+      <div class="appearance-section">
+
+        <span class="field-title">Pronouns</span>
+
+        <div class="choice-grid">
+
+          <button class="choice-button pronoun" data-value="she/her">
+            She / Her
+          </button>
+
+          <button class="choice-button pronoun" data-value="he/him">
+            He / Him
+          </button>
+
+          <button class="choice-button pronoun" data-value="they/them">
+            They / Them
+          </button>
+
+          <button class="choice-button pronoun" data-value="any">
+            Any
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="appearance-section">
+
+        <span class="field-title">Build</span>
+
+        <p>
+          This changes only how your rider is described.
+        </p>
+
+        <div class="choice-grid">
+
+          <button class="choice-button build" data-value="slight">
+            Slight
+          </button>
+
+          <button class="choice-button build" data-value="athletic">
+            Athletic
+          </button>
+
+          <button class="choice-button build" data-value="broad">
+            Broad
+          </button>
+
+          <button class="choice-button build" data-value="curvy">
+            Curvy
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="appearance-section">
+
+        <div class="two-column">
+
+          <div>
+
+            <label for="skinTone">
+              Skin Tone
+            </label>
+
+            <select id="skinTone">
+              <option value="">Choose...</option>
+              <option>Porcelain</option>
+              <option>Fair</option>
+              <option>Light</option>
+              <option>Light-Medium</option>
+              <option>Medium</option>
+              <option>Olive</option>
+              <option>Tan</option>
+              <option>Brown</option>
+              <option>Deep Brown</option>
+              <option>Ebony</option>
+            </select>
+
+          </div>
+
+
+          <div>
+
+            <label for="eyeColor">
+              Eyes
+            </label>
+
+            <select id="eyeColor">
+              <option value="">Choose...</option>
+              <option>Brown</option>
+              <option>Hazel</option>
+              <option>Green</option>
+              <option>Blue</option>
+              <option>Gray</option>
+              <option>Amber</option>
+              <option>Violet</option>
+              <option>Silver</option>
+            </select>
+
+          </div>
+
+        </div>
+
+
+        <div class="two-column">
+
+          <div>
+
+            <label for="hairColor">
+              Hair Color
+            </label>
+
+            <select id="hairColor">
+              <option value="">Choose...</option>
+              <option>Black</option>
+              <option>Dark Brown</option>
+              <option>Brown</option>
+              <option>Auburn</option>
+              <option>Red</option>
+              <option>Dark Blonde</option>
+              <option>Blonde</option>
+              <option>Platinum</option>
+              <option>Silver</option>
+              <option>White</option>
+            </select>
+
+          </div>
+
+
+          <div>
+
+            <label for="hairStyle">
+              Hair Style
+            </label>
+
+            <select id="hairStyle">
+              <option value="">Choose...</option>
+              <option>Long and straight</option>
+              <option>Long and wavy</option>
+              <option>Long and curly</option>
+              <option>Shoulder-length</option>
+              <option>Braided</option>
+              <option>Short and tousled</option>
+              <option>Close-cropped</option>
+              <option>Shaved</option>
+            </select>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="appearance-section">
+
+        <label for="feature">
+          Distinguishing Feature
+        </label>
+
+        <select id="feature">
+
+          <option value="">Choose...</option>
+
+          <option>None</option>
+
+          <option>Freckles</option>
+
+          <option>A scar through one eyebrow</option>
+
+          <option>A scar across the cheek</option>
+
+          <option>Several battle scars</option>
+
+          <option>Dark rune tattoos</option>
+
+          <option>Floral tattoos</option>
+
+          <option>Multiple ear piercings</option>
+
+          <option>A small facial piercing</option>
+
+        </select>
+
+      </div>
+
+
+      <button id="beginTrials" class="main-button">
+        Begin the Trials
+      </button>
+
+      <button id="backToName" class="back-button">
+        ← Return to Name
+      </button>
+
+      <div id="appearanceMessage"></div>
+
+    </div>
+
+  </section>
+
 
   <script>
 
-    /* ---------------------------
-       SCREEN CONTROLS
-    ---------------------------- */
+    /* ---------- ELEMENTS ---------- */
 
     const titleScreen =
       document.getElementById("titleScreen");
 
-    const characterScreen =
-      document.getElementById("characterScreen");
+    const nameScreen =
+      document.getElementById("nameScreen");
+
+    const appearanceScreen =
+      document.getElementById("appearanceScreen");
 
     const enterButton =
       document.getElementById("enterButton");
 
-    const continueButton =
-      document.getElementById("continueButton");
-
     const riderName =
       document.getElementById("riderName");
-
-    const welcomeMessage =
-      document.getElementById("welcomeMessage");
 
     const forgeButton =
       document.getElementById("forgeButton");
 
-    const styleButtons =
-      document.querySelectorAll(".style-button");
+    const nameStyleButtons =
+      document.querySelectorAll(".name-style");
+
+    const continueToAppearance =
+      document.getElementById("continueToAppearance");
+
+    const welcomeMessage =
+      document.getElementById("welcomeMessage");
+
+    const pronounButtons =
+      document.querySelectorAll(".pronoun");
+
+    const buildButtons =
+      document.querySelectorAll(".build");
+
+    const skinTone =
+      document.getElementById("skinTone");
+
+    const eyeColor =
+      document.getElementById("eyeColor");
+
+    const hairColor =
+      document.getElementById("hairColor");
+
+    const hairStyle =
+      document.getElementById("hairStyle");
+
+    const feature =
+      document.getElementById("feature");
+
+    const beginTrials =
+      document.getElementById("beginTrials");
+
+    const backToName =
+      document.getElementById("backToName");
+
+    const appearanceMessage =
+      document.getElementById("appearanceMessage");
 
 
-    let selectedStyle = "surprise";
+    /* ---------- RIDER DATA ---------- */
+
+    const rider = {
+      name: "",
+      pronouns: "",
+      build: "",
+      skinTone: "",
+      eyes: "",
+      hairColor: "",
+      hairStyle: "",
+      feature: ""
+    };
 
 
-    enterButton.addEventListener(
-      "click",
-      function () {
+    /* ---------- TITLE ---------- */
 
-        titleScreen.style.display = "none";
+    enterButton.addEventListener("click", function () {
 
-        characterScreen.style.display = "flex";
+      titleScreen.style.display = "none";
+      nameScreen.style.display = "flex";
 
-      }
-    );
+    });
 
 
-
-    /* ---------------------------
-       NAME LIBRARIES
-    ---------------------------- */
+    /* ---------- NAME GENERATOR ---------- */
 
     const names = {
 
       gothic: {
 
         first: [
-          "Vesper",
-          "Lucien",
-          "Veyra",
-          "Morrin",
-          "Elara",
-          "Riven",
-          "Seraphine",
-          "Corvin",
-          "Nyx",
-          "Evren",
-          "Isolde",
-          "Cassian",
-          "Lenore",
-          "Dorian",
-          "Vara",
-          "Malric"
+          "Vesper", "Lucien", "Veyra", "Morrin",
+          "Elara", "Riven", "Seraphine", "Corvin",
+          "Nyx", "Evren", "Isolde", "Cassian",
+          "Lenore", "Dorian", "Vara", "Malric"
         ],
 
         last: [
-          "Thorne",
-          "Morcant",
-          "Voss",
-          "Blackmere",
-          "Rook",
-          "Graves",
-          "Duskryn",
-          "Veyne",
-          "Ravenscar",
-          "Ashmoor",
-          "Vale",
-          "Nightwell"
+          "Thorne", "Morcant", "Voss", "Blackmere",
+          "Rook", "Graves", "Duskryn", "Veyne",
+          "Ravenscar", "Ashmoor", "Vale", "Nightwell"
         ]
       },
-
 
       nordic: {
 
         first: [
-          "Eira",
-          "Soren",
-          "Astrid",
-          "Torren",
-          "Freya",
-          "Stellan",
-          "Kaia",
-          "Leif",
-          "Yrsa",
-          "Runa",
-          "Ivar",
-          "Sigrid",
-          "Kellan",
-          "Brynja",
-          "Hakon",
-          "Tova"
+          "Eira", "Soren", "Astrid", "Torren",
+          "Freya", "Stellan", "Kaia", "Leif",
+          "Yrsa", "Runa", "Ivar", "Sigrid",
+          "Kellan", "Brynja", "Hakon", "Tova"
         ],
 
         last: [
-          "Skeld",
-          "Haldor",
-          "Vargan",
-          "Stormvein",
-          "Frost",
-          "Eldsen",
-          "Ravn",
-          "Halvik",
-          "Skarn",
-          "Veyr",
-          "Ironmark",
-          "Eirsson"
+          "Skeld", "Haldor", "Vargan", "Stormvein",
+          "Frost", "Eldsen", "Ravn", "Halvik",
+          "Skarn", "Veyr", "Ironmark", "Eirsson"
         ]
       },
-
 
       arcane: {
 
         first: [
-          "Kaelith",
-          "Aevra",
-          "Nyra",
-          "Vaelis",
-          "Elowyn",
-          "Theron",
-          "Saeryn",
-          "Astra",
-          "Caelen",
-          "Ilyra",
-          "Orien",
-          "Veylin",
-          "Lyssara",
-          "Aeron",
-          "Sylas",
-          "Maevyn"
+          "Kaelith", "Aevra", "Nyra", "Vaelis",
+          "Elowyn", "Theron", "Saeryn", "Astra",
+          "Caelen", "Ilyra", "Orien", "Veylin",
+          "Lyssara", "Aeron", "Sylas", "Maevyn"
         ],
 
         last: [
-          "Vael",
-          "Aevryn",
-          "Arveth",
-          "Elaris",
-          "Veyrin",
-          "Cael",
-          "Solryn",
-          "Aster",
-          "Thalen",
-          "Ilyth",
-          "Vaelor",
-          "Aethryn"
+          "Vael", "Aevryn", "Arveth", "Elaris",
+          "Veyrin", "Cael", "Solryn", "Aster",
+          "Thalen", "Ilyth", "Vaelor", "Aethryn"
         ]
       }
 
     };
 
 
+    let selectedStyle = "surprise";
 
-    /* ---------------------------
-       NAME GENERATOR
-    ---------------------------- */
 
     function randomItem(array) {
 
       return array[
-        Math.floor(
-          Math.random() * array.length
-        )
+        Math.floor(Math.random() * array.length)
       ];
 
     }
@@ -649,32 +774,15 @@
 
       if (style === "surprise") {
 
-        const availableStyles = [
-          "gothic",
-          "nordic",
-          "arcane"
-        ];
-
         chosenStyle =
-          randomItem(availableStyles);
+          randomItem(["gothic", "nordic", "arcane"]);
 
       }
 
-
-      const first =
-        randomItem(
-          names[chosenStyle].first
-        );
-
-      const last =
-        randomItem(
-          names[chosenStyle].last
-        );
-
-
       riderName.value =
-        first + " " + last;
-
+        randomItem(names[chosenStyle].first) +
+        " " +
+        randomItem(names[chosenStyle].last);
 
       welcomeMessage.textContent =
         "The name feels strangely familiar.";
@@ -682,108 +790,183 @@
     }
 
 
+    nameStyleButtons.forEach(function(button) {
 
-    /* ---------------------------
-       STYLE BUTTONS
-    ---------------------------- */
+      button.addEventListener("click", function() {
 
-    styleButtons.forEach(
-      function (button) {
+        selectedStyle = button.dataset.style;
 
-        button.addEventListener(
-          "click",
-          function () {
+        nameStyleButtons.forEach(function(item) {
+          item.classList.remove("active");
+        });
 
-            selectedStyle =
-              button.dataset.style;
+        button.classList.add("active");
 
+        generateName(selectedStyle);
 
-            styleButtons.forEach(
-              function (item) {
+      });
 
-                item.classList.remove(
-                  "active"
-                );
-
-              }
-            );
+    });
 
 
-            button.classList.add(
-              "active"
-            );
+    forgeButton.addEventListener("click", function() {
+
+      generateName(selectedStyle);
+
+    });
 
 
-            generateName(
-              selectedStyle
-            );
+    /* ---------- CONTINUE TO APPEARANCE ---------- */
 
-          }
-        );
+    continueToAppearance.addEventListener("click", function() {
 
-      }
-    );
+      const name =
+        riderName.value.trim();
 
-
-
-    /* ---------------------------
-       FORGE ANOTHER
-    ---------------------------- */
-
-    forgeButton.addEventListener(
-      "click",
-      function () {
-
-        generateName(
-          selectedStyle
-        );
-
-      }
-    );
-
-
-
-    /* ---------------------------
-       CONTINUE
-    ---------------------------- */
-
-    continueButton.addEventListener(
-      "click",
-      function () {
-
-        const name =
-          riderName.value.trim();
-
-
-        if (name === "") {
-
-          welcomeMessage.textContent =
-            "Every rider has a name.";
-
-          return;
-
-        }
-
-
-        /* Save rider for later chapters */
-
-        const rider = {
-          name: name
-        };
-
-
-        localStorage.setItem(
-          "boundByFireRider",
-          JSON.stringify(rider)
-        );
-
+      if (name === "") {
 
         welcomeMessage.textContent =
-          name +
-          ", the dragons are already watching.";
+          "Every rider has a name.";
+
+        return;
 
       }
+
+      rider.name = name;
+
+      nameScreen.style.display = "none";
+      appearanceScreen.style.display = "flex";
+
+      window.scrollTo(0, 0);
+
+    });
+
+
+    /* ---------- SELECTABLE OPTIONS ---------- */
+
+    function makeSingleChoice(buttons, property) {
+
+      buttons.forEach(function(button) {
+
+        button.addEventListener("click", function() {
+
+          buttons.forEach(function(item) {
+            item.classList.remove("active");
+          });
+
+          button.classList.add("active");
+
+          rider[property] =
+            button.dataset.value;
+
+        });
+
+      });
+
+    }
+
+
+    makeSingleChoice(
+      pronounButtons,
+      "pronouns"
     );
+
+    makeSingleChoice(
+      buildButtons,
+      "build"
+    );
+
+
+    /* ---------- BACK ---------- */
+
+    backToName.addEventListener("click", function() {
+
+      appearanceScreen.style.display = "none";
+      nameScreen.style.display = "flex";
+
+      window.scrollTo(0, 0);
+
+    });
+
+
+    /* ---------- BEGIN ---------- */
+
+    beginTrials.addEventListener("click", function() {
+
+      rider.skinTone =
+        skinTone.value;
+
+      rider.eyes =
+        eyeColor.value;
+
+      rider.hairColor =
+        hairColor.value;
+
+      rider.hairStyle =
+        hairStyle.value;
+
+      rider.feature =
+        feature.value;
+
+
+      if (
+        rider.pronouns === "" ||
+        rider.build === "" ||
+        rider.skinTone === "" ||
+        rider.eyes === "" ||
+        rider.hairColor === "" ||
+        rider.hairStyle === "" ||
+        rider.feature === ""
+      ) {
+
+        appearanceMessage.textContent =
+          "Finish shaping your rider before entering the trials.";
+
+        return;
+
+      }
+
+
+      /* Save complete rider */
+
+      localStorage.setItem(
+        "boundByFireRider",
+        JSON.stringify(rider)
+      );
+
+
+      /*
+        Hidden personality system begins
+        with all traits neutral.
+      */
+
+      const personality = {
+
+        compassion: 0,
+        aggression: 0,
+        intellect: 0,
+        courage: 0,
+        loyalty: 0,
+        ambition: 0,
+        independence: 0,
+        caution: 0,
+        charisma: 0,
+        instinct: 0
+
+      };
+
+
+      localStorage.setItem(
+        "boundByFirePersonality",
+        JSON.stringify(personality)
+      );
+
+
+      appearanceMessage.textContent =
+        rider.name +
+        ", your name has been entered into the Book of Riders.";
+
+    });
 
   </script>
 
