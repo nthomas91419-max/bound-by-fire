@@ -544,6 +544,33 @@
   }
 }
 
+
+
+/* ========== COMPLETE GAME EXPANSION ========== */
+#trialThreeScreen, #trialFourScreen, #trialFiveScreen,
+#trialThreeResultScreen, #trialFourResultScreen, #trialFiveResultScreen,
+#professorScreen, #choosingScreen, #dragonRevealScreen {
+  display:none; min-height:100vh; width:100%; padding:70px 24px;
+  align-items:center; justify-content:center; color:#f3e7d3;
+  background:radial-gradient(circle at center, rgba(92,32,14,.35), rgba(5,5,5,.96) 70%);
+}
+#trialThreeScreen { background-image:linear-gradient(rgba(5,5,5,.78),rgba(5,5,5,.94)),url("trial-3-encounter.png"); background-size:cover; background-position:center; }
+#trialFourScreen { background-image:linear-gradient(rgba(5,5,5,.80),rgba(5,5,5,.95)),url("trial-4-betrayal.png"); background-size:cover; background-position:center; }
+#trialFiveScreen { background-image:linear-gradient(rgba(5,5,5,.78),rgba(5,5,5,.95)),url("trial-5-fire.png"); background-size:cover; background-position:center; }
+#choosingScreen { background-image:linear-gradient(rgba(5,5,5,.74),rgba(5,5,5,.94)),url("the-choosing.png"); background-size:cover; background-position:center; }
+#professorScreen { background-image:linear-gradient(rgba(5,5,5,.82),rgba(5,5,5,.96)),url("professor.png"); background-size:cover; background-position:center; }
+#dragonRevealScreen { background:radial-gradient(circle at top,#4a1b0d,#120806 52%,#030303); }
+#trialThreeResultStory,#trialFourResultStory,#trialFiveResultStory,#professorStory,#choosingStory,#dragonRevealStory { font-size:1.12rem; line-height:1.9; margin:30px 0; }
+.reveal-name { color:#f4b65d; font-size:clamp(2.6rem,7vw,5rem); text-align:center; letter-spacing:4px; text-transform:uppercase; margin:10px 0 5px; }
+.reveal-type { color:#d79247; text-align:center; letter-spacing:3px; text-transform:uppercase; margin-bottom:25px; }
+.dragon-portrait { width:100%; max-height:430px; object-fit:cover; border:1px solid #7c3216; margin:20px 0 28px; display:none; box-shadow:0 0 40px rgba(154,54,17,.25); }
+.score-note { color:#8f7d6f; text-align:center; font-style:italic; margin-top:25px; }
+@media (max-width:700px){
+  #trialOneScreen,#trialTwoScreen,#trialThreeScreen,#trialFourScreen,#trialFiveScreen,
+  #trialOneResultScreen,#trialTwoResultScreen,#trialThreeResultScreen,#trialFourResultScreen,#trialFiveResultScreen,
+  #professorScreen,#choosingScreen,#dragonRevealScreen { padding:30px 15px; }
+}
+
 </style>
 </head>
 
@@ -1115,6 +1142,54 @@
 
 </section>
 
+
+
+<!-- ========== TRIAL III: THE ENCOUNTER ========== -->
+<section id="trialThreeScreen"><div class="trial-container">
+  <div class="trial-number">TRIAL III</div><h2 class="trial-title">THE ENCOUNTER</h2><div class="trial-divider">◆</div>
+  <div class="trial-story"><p>The Academy told you the dragons were kept beyond the eastern wall.</p><p>They lied.</p><p>Something enormous is standing in the corridor ahead of you.</p><p>Black-gold scales scrape the stone. Smoke curls from its nostrils. One molten eye fixes on you.</p><p>There is no instructor. No weapon in your hand. No obvious way around it.</p><p>The dragon lowers its head until its breath warms your face.</p></div>
+  <div class="trial-question">WHAT DO YOU DO?</div><div class="trial-choices">
+    <button class="trial-choice"><span class="choice-title">STAND YOUR GROUND</span><span class="choice-description">Meet its gaze. Fear is not the same thing as surrender.</span></button>
+    <button class="trial-choice"><span class="choice-title">LOWER YOUR EYES</span><span class="choice-description">Show respect. You are in the presence of something older and more dangerous than you.</span></button>
+    <button class="trial-choice"><span class="choice-title">REACH FOR IT</span><span class="choice-description">Trust the feeling in your chest and slowly offer your hand.</span></button>
+    <button class="trial-choice"><span class="choice-title">SEARCH FOR THE TRICK</span><span class="choice-description">Study the corridor, the dragon, and the exits. Trials are rarely what they appear to be.</span></button>
+  </div><div class="trial-whisper">The dragon's pupil narrows.</div>
+</div></section>
+<section id="trialThreeResultScreen"><div class="trial-container"><div class="trial-number">THE ENCOUNTER</div><h2 id="trialThreeResultTitle" class="trial-title">THE DRAGON REMEMBERS</h2><div class="trial-divider">◆</div><div id="trialThreeResultStory" class="trial-story"></div><div class="trial-whisper">For the first time, you are certain: the dragons are judging you too.</div><button id="continueAfterTrialThree" class="trial-continue">CONTINUE</button></div></section>
+
+<!-- ========== TRIAL IV: THE BETRAYAL ========== -->
+<section id="trialFourScreen"><div class="trial-container">
+  <div class="trial-number">TRIAL IV</div><h2 class="trial-title">THE BETRAYAL</h2><div class="trial-divider">◆</div>
+  <div class="trial-story"><p>Near midnight, you find a rider you have come to trust inside the restricted archive.</p><p>In their hands is a sealed ledger: names of candidates the Academy intends to quietly remove before the Choosing.</p><p>Your name is among them.</p><p>Footsteps approach.</p><p>Your friend whispers, “I stole it because you deserved to know. Decide now.”</p></div>
+  <div class="trial-question">WHAT DO YOU DO?</div><div class="trial-choices">
+    <button class="trial-choice"><span class="choice-title">PROTECT YOUR FRIEND</span><span class="choice-description">Hide the ledger and take the risk together. Loyalty means something when it costs you.</span></button>
+    <button class="trial-choice"><span class="choice-title">TURN THEM IN</span><span class="choice-description">They broke Academy law. Whatever the ledger says, betrayal has consequences.</span></button>
+    <button class="trial-choice"><span class="choice-title">TAKE THE LEDGER</span><span class="choice-description">Trust no one with your future. Keep the evidence and decide what to do with it yourself.</span></button>
+    <button class="trial-choice"><span class="choice-title">EXPOSE EVERYTHING</span><span class="choice-description">Walk into the hall with the ledger in your hand and force the Academy to answer publicly.</span></button>
+  </div><div class="trial-whisper">Some truths burn hotter when brought into the light.</div>
+</div></section>
+<section id="trialFourResultScreen"><div class="trial-container"><div class="trial-number">THE BETRAYAL</div><h2 id="trialFourResultTitle" class="trial-title">THE COST OF TRUST</h2><div class="trial-divider">◆</div><div id="trialFourResultStory" class="trial-story"></div><div class="trial-whisper">The Academy keeps records. Dragons keep different ones.</div><button id="continueAfterTrialFour" class="trial-continue">CONTINUE</button></div></section>
+
+<!-- ========== PROFESSOR INTERVENTION ========== -->
+<section id="professorScreen"><div class="trial-container"><div class="trial-number">A VOICE IN THE HALL</div><h2 class="trial-title">PROFESSOR VAELOR</h2><div class="trial-divider">◆</div><div id="professorStory" class="trial-story"><p>“Rider.”</p><p>Professor Vaelor steps from the shadows, silver at his temples catching the firelight.</p><p>“There is a difference between contradiction and uncertainty. The first is human. The second becomes dangerous when you refuse to examine it.”</p><p>His gaze settles on you.</p><p>“A dragon does not require you to be predictable. It requires you to be true. Choose as the person you are—not as the person you think each trial wishes you to become.”</p><p>A faint smile touches his face.</p><p>“The trials are not searching for correct answers. Neither are the dragons.”</p></div><button id="continueAfterProfessor" class="trial-continue">RETURN TO THE TRIALS</button></div></section>
+
+<!-- ========== TRIAL V: THE FIRE ========== -->
+<section id="trialFiveScreen"><div class="trial-container">
+  <div class="trial-number">TRIAL V</div><h2 class="trial-title">THE FIRE</h2><div class="trial-divider">◆</div>
+  <div class="trial-story"><p>The final trial begins with bells.</p><p>Then the western tower explodes.</p><p>Flame pours across the courtyard. Riders scatter. Instructors shout conflicting orders.</p><p>Through the smoke you see three things at once: a trapped first-year beneath a fallen beam, the gate controls that could contain the fire, and the path to the Choosing chamber standing open.</p><p>No one tells you what this trial is testing.</p><p>Perhaps this time, it is not a trial at all.</p></div>
+  <div class="trial-question">WHAT DO YOU DO?</div><div class="trial-choices">
+    <button class="trial-choice"><span class="choice-title">SAVE THE RIDER</span><span class="choice-description">Run into the fire. A life matters more than the trial.</span></button>
+    <button class="trial-choice"><span class="choice-title">SEAL THE GATES</span><span class="choice-description">Stop the fire from spreading. Saving everyone may require leaving one person waiting.</span></button>
+    <button class="trial-choice"><span class="choice-title">TAKE COMMAND</span><span class="choice-description">Rally the riders. Divide the work and make the chaos obey you.</span></button>
+    <button class="trial-choice"><span class="choice-title">GO TO THE CHOOSING</span><span class="choice-description">The path is open. You have survived every test. Do not surrender your future now.</span></button>
+  </div><div class="trial-whisper">Above the flames, dragons begin to roar.</div>
+</div></section>
+<section id="trialFiveResultScreen"><div class="trial-container"><div class="trial-number">THE FIRE</div><h2 id="trialFiveResultTitle" class="trial-title">THE FINAL MARK</h2><div class="trial-divider">◆</div><div id="trialFiveResultStory" class="trial-story"></div><div class="trial-whisper">Five trials. Five choices. The dragons have seen enough.</div><button id="continueAfterTrialFive" class="trial-continue">ENTER THE CHOOSING</button></div></section>
+
+<!-- ========== THE CHOOSING ========== -->
+<section id="choosingScreen"><div class="trial-container"><div class="trial-number">THE CHOOSING</div><h2 class="trial-title">BOUND BY FIRE</h2><div class="trial-divider">◆</div><div id="choosingStory" class="trial-story"><p>The great doors open.</p><p>Dragons line the black stone terraces above you—bronze, crimson, ivory, midnight, storm-gray.</p><p>You were told riders came here to choose.</p><p>Another lie.</p><p>One by one, dragons turn their heads away.</p><p>Then the chamber changes.</p></div><button id="revealDragonButton" class="trial-continue">FACE YOUR DRAGON</button></div></section>
+<section id="dragonRevealScreen"><div class="trial-container"><div class="trial-number">THE BOND</div><h2 class="trial-title">YOU HAVE BEEN CHOSEN</h2><div class="trial-divider">◆</div><img id="dragonPortrait" class="dragon-portrait" alt="Your dragon"><div id="dragonName" class="reveal-name"></div><div id="dragonType" class="reveal-type"></div><div id="dragonRevealStory" class="trial-story"></div><div class="trial-whisper">You don't choose your dragon. Your choices do.</div><button id="restartGame" class="trial-continue">BEGIN ANOTHER FATE</button></div></section>
+
   <script>
 
     /* ---------- ELEMENTS ---------- */
@@ -1466,6 +1541,10 @@
         "boundByFirePersonality",
         JSON.stringify(personality)
       );
+
+      localStorage.setItem("boundByFireChoiceStyles", "[]");
+      localStorage.removeItem("boundByFireProfessorWarned");
+      localStorage.removeItem("boundByFireWildcard");
 
 
       appearanceMessage.textContent =
@@ -1891,10 +1970,67 @@ trialTwoChoices.forEach(function(choice) {
 
 
 continueAfterTrialTwo.addEventListener("click", function() {
-
-  alert("Trial III is coming next.");
-
+  trialTwoResultScreen.style.display = "none";
+  document.getElementById("trialThreeScreen").style.display = "flex";
+  window.scrollTo(0, 0);
 });
+
+
+/* ========== COMPLETE TRIAL ARC ========== */
+const choiceStyles = JSON.parse(localStorage.getItem("boundByFireChoiceStyles") || "[]");
+function getPersonality(){ return JSON.parse(localStorage.getItem("boundByFirePersonality")) || {compassion:0,aggression:0,intellect:0,courage:0,loyalty:0,ambition:0,independence:0,caution:0,charisma:0,instinct:0}; }
+function addScores(scores){ const p=getPersonality(); Object.keys(scores).forEach(k=>p[k]=(p[k]||0)+scores[k]); localStorage.setItem("boundByFirePersonality",JSON.stringify(p)); }
+function recordStyle(style){ choiceStyles.push(style); localStorage.setItem("boundByFireChoiceStyles",JSON.stringify(choiceStyles)); }
+function switches(){ let n=0; for(let i=1;i<choiceStyles.length;i++) if(choiceStyles[i]!==choiceStyles[i-1]) n++; return n; }
+
+// Record the first two trials for consistency analysis without changing their existing scores.
+trialOneChoices.forEach(btn=>btn.addEventListener("click",()=>{ const t=btn.querySelector(".choice-title").textContent.trim(); const map={"TURN BACK":"heart","ACT WITHOUT THINKING":"force","FIND ANOTHER WAY":"mind","KEEP MOVING":"self"}; if(choiceStyles.length<1) recordStyle(map[t]); }, {once:true}));
+trialTwoChoices.forEach(btn=>btn.addEventListener("click",()=>{ const t=btn.querySelector(".choice-title").textContent.trim(); const map={"OBEY THE ORDER":"force","REFUSE":"heart","CHALLENGE THE INSTRUCTOR":"self","MAKE IT LOOK REAL":"mind"}; if(choiceStyles.length<2) recordStyle(map[t]); }, {once:true}));
+
+const trials = {
+  three:{screen:"trialThreeScreen",result:"trialThreeResultScreen",title:"trialThreeResultTitle",story:"trialThreeResultStory",choiceKey:"boundByFireTrialThreeChoice",choices:{
+    "STAND YOUR GROUND":{title:"YOU DO NOT FLINCH",style:"force",scores:{courage:3,aggression:1,independence:2},story:`<p>You hold the dragon's gaze.</p><p>Every instinct begs you to move. You refuse.</p><p>The dragon exhales a ribbon of smoke across your face.</p><p>Then, impossibly, it steps aside.</p><p>Not submission. Recognition.</p>`},
+    "LOWER YOUR EYES":{title:"YOU SHOW RESPECT",style:"heart",scores:{caution:3,loyalty:2,compassion:1},story:`<p>You lower your gaze, but not your head.</p><p>The dragon studies you in silence.</p><p>A claw the size of your chest settles against the stone beside you.</p><p>You understand the message: respect is not weakness when it is freely given.</p>`},
+    "REACH FOR IT":{title:"YOU TRUST THE PULL",style:"heart",scores:{instinct:3,compassion:2,courage:2},story:`<p>You lift an empty hand.</p><p>The dragon could end you before your next breath.</p><p>Instead, its muzzle touches your palm.</p><p>Heat races up your arm like a second heartbeat.</p><p>For one instant, you feel something looking back from behind those ancient eyes.</p>`},
+    "SEARCH FOR THE TRICK":{title:"YOU QUESTION THE SCENE",style:"mind",scores:{intellect:3,caution:3,independence:1},story:`<p>You refuse to let awe steal your attention.</p><p>You notice the open side door. The soot that ends too neatly. The instructor watching through a slit in the stone.</p><p>The dragon notices you noticing.</p><p>Its mouth opens just enough to show teeth.</p><p>You could swear it is amused.</p>`}
+  }},
+  four:{screen:"trialFourScreen",result:"trialFourResultScreen",title:"trialFourResultTitle",story:"trialFourResultStory",choiceKey:"boundByFireTrialFourChoice",choices:{
+    "PROTECT YOUR FRIEND":{title:"YOU CHOOSE LOYALTY",style:"heart",scores:{loyalty:3,compassion:2,courage:1},story:`<p>You take the ledger and hide it beneath your coat.</p><p>When the guards enter, you stand beside your friend.</p><p>Whatever comes next, neither of you faces it alone.</p><p>Somewhere in the dark, a dragon gives a low approving rumble.</p>`},
+    "TURN THEM IN":{title:"YOU CHOOSE THE LAW",style:"force",scores:{loyalty:2,caution:2,ambition:2},story:`<p>You step away as the guards enter.</p><p>“They stole from the restricted archive.”</p><p>Your friend's face closes.</p><p>The ledger is taken. So are they.</p><p>You have protected the order. Whether the order deserved protecting remains unanswered.</p>`},
+    "TAKE THE LEDGER":{title:"YOU TRUST YOURSELF",style:"self",scores:{independence:3,ambition:2,intellect:2},story:`<p>You take the ledger.</p><p>“Go. I'll handle this.”</p><p>Your friend disappears through the servant passage while you slip the truth beneath your coat.</p><p>No professor, friend, or rule will decide what happens to your name now.</p>`},
+    "EXPOSE EVERYTHING":{title:"YOU DRAG THE TRUTH INTO LIGHT",style:"mind",scores:{charisma:3,courage:2,independence:2},story:`<p>You walk toward the footsteps instead of away from them.</p><p>Minutes later, the ledger lies open before half the Academy.</p><p>Questions become accusations. Accusations become uproar.</p><p>Professor Vaelor watches you from the edge of the crowd with an unreadable expression.</p>`}
+  }},
+  five:{screen:"trialFiveScreen",result:"trialFiveResultScreen",title:"trialFiveResultTitle",story:"trialFiveResultStory",choiceKey:"boundByFireTrialFiveChoice",choices:{
+    "SAVE THE RIDER":{title:"YOU RUN INTO THE FIRE",style:"heart",scores:{compassion:4,courage:3,loyalty:2},story:`<p>The heat is monstrous.</p><p>You go anyway.</p><p>You lift the beam with burned hands and drag the first-year into clean air.</p><p>When you finally look up, dragons are circling the tower.</p><p>One of them is watching only you.</p>`},
+    "SEAL THE GATES":{title:"YOU CHOOSE THE MANY",style:"mind",scores:{intellect:3,caution:3,courage:1},story:`<p>You sprint for the controls.</p><p>The iron gates slam down, starving the spreading fire of its path.</p><p>Others reach the trapped rider seconds later.</p><p>You did not save one person. You changed the shape of the disaster.</p>`},
+    "TAKE COMMAND":{title:"THEY LISTEN",style:"force",scores:{charisma:4,courage:2,intellect:2},story:`<p>Your voice cuts through the panic.</p><p>“You two, the beam. You, with me. Close the west gate!”</p><p>People move.</p><p>Chaos becomes action.</p><p>Above you, a dragon roars—and the sound feels almost like an answer.</p>`},
+    "GO TO THE CHOOSING":{title:"YOU CLAIM YOUR FUTURE",style:"self",scores:{ambition:4,independence:3,aggression:1},story:`<p>You look at the fire. Then at the open path.</p><p>You have bled for this place. You have survived every demand it made.</p><p>You step through the Choosing doors.</p><p>Behind you, bells continue to ring.</p><p>Ahead, something enormous moves in the dark.</p>`}
+  }}
+};
+function wireTrial(key,next){ const t=trials[key], screen=document.getElementById(t.screen), result=document.getElementById(t.result); screen.querySelectorAll(".trial-choice").forEach(btn=>btn.addEventListener("click",()=>{ const name=btn.querySelector(".choice-title").textContent.trim(), c=t.choices[name]; addScores(c.scores); recordStyle(c.style); localStorage.setItem(t.choiceKey,name); document.getElementById(t.title).textContent=c.title; document.getElementById(t.story).innerHTML=c.story; screen.style.display="none"; result.style.display="flex"; window.scrollTo(0,0); })); document.getElementById("continueAfterTrial"+({three:"Three",four:"Four",five:"Five"}[key])).addEventListener("click",next); }
+wireTrial("three",()=>{ document.getElementById("trialThreeResultScreen").style.display="none"; document.getElementById("trialFourScreen").style.display="flex"; window.scrollTo(0,0); });
+wireTrial("four",()=>{ document.getElementById("trialFourResultScreen").style.display="none"; const warn=switches()>=3; localStorage.setItem("boundByFireProfessorWarned",warn?"true":"false"); document.getElementById(warn?"professorScreen":"trialFiveScreen").style.display="flex"; window.scrollTo(0,0); });
+document.getElementById("continueAfterProfessor").addEventListener("click",()=>{ document.getElementById("professorScreen").style.display="none"; document.getElementById("trialFiveScreen").style.display="flex"; window.scrollTo(0,0); });
+wireTrial("five",()=>{ document.getElementById("trialFiveResultScreen").style.display="none"; const warned=localStorage.getItem("boundByFireProfessorWarned")==="true"; if(warned && switches()>=4) localStorage.setItem("boundByFireWildcard","true"); document.getElementById("choosingScreen").style.display="flex"; window.scrollTo(0,0); });
+
+const dragons=[
+{name:"Aureth",type:"The Dawnscale",img:"dragons/aureth.png",weights:{compassion:3,courage:2,loyalty:3},desc:"A radiant bronze dragon known for choosing protectors—riders who step toward danger when someone else cannot."},
+{name:"Varkesh",type:"The Iron Maw",img:"dragons/varkesh.png",weights:{aggression:3,courage:3,ambition:2},desc:"A battle-scarred crimson dragon who respects nerve, force, and riders willing to act when hesitation costs blood."},
+{name:"Nymera",type:"The Veiled Wing",img:"dragons/nymera.png",weights:{intellect:3,caution:3,instinct:1},desc:"A smoke-gray strategist who prefers riders who notice what others miss and rarely accept the obvious answer."},
+{name:"Solvar",type:"The Oathkeeper",img:"dragons/solvar.png",weights:{loyalty:4,courage:2,compassion:1},desc:"An ancient gold dragon whose bonds are rare and absolute. Betrayal is the one wound Solvar never forgives."},
+{name:"Kharos",type:"The Crownless",img:"dragons/kharos.png",weights:{independence:4,ambition:2,courage:1},desc:"A midnight dragon who has refused kings, generals, and champions. Kharos chooses riders who belong first to themselves."},
+{name:"Elyndra",type:"The Whisperflame",img:"dragons/elyndra.png",weights:{instinct:4,compassion:2,charisma:1},desc:"An opalescent dragon said to feel intention before action. Her riders trust the pull they cannot always explain."},
+{name:"Dravyn",type:"The Ash Commander",img:"dragons/dravyn.png",weights:{charisma:4,intellect:2,courage:2},desc:"A massive charcoal dragon who responds to presence. Dravyn chooses those others follow before they realize they have chosen to."},
+{name:"Serath",type:"The Ember Judge",img:"dragons/serath.png",weights:{caution:3,intellect:2,loyalty:2},desc:"Copper-scaled and severe, Serath values restraint—the strength to wait, assess, and strike only when the moment is right."},
+{name:"Vaelora",type:"The Starved Flame",img:"dragons/vaelora.png",weights:{ambition:4,independence:2,aggression:1},desc:"A sleek violet-black dragon drawn to hunger—not for food, but for becoming more than the world intended."},
+{name:"Thorne",type:"The Briarheart",img:"dragons/thorne.png",weights:{compassion:3,independence:2,instinct:2},desc:"A green-black dragon with a reputation for impossible bonds. Thorne chooses gentle rebels: riders who care deeply and obey selectively."},
+{name:"Rhazien",type:"The Stormborn",img:"dragons/rhazien.png",weights:{courage:3,instinct:2,aggression:2},desc:"A blue-silver tempest dragon who delights in decisive riders and treats danger as an invitation rather than a warning."}
+];
+const wildcard={name:"Morrow",type:"The Unwritten",img:"dragons/wildcard.png",desc:"No name was called. No dragon on the terraces moved. Then the roof shook. Morrow—the dragon absent from every Academy record—landed beyond the circle. The professors went silent. Morrow did not choose consistency. Morrow chose the rider no one could predict."};
+function chooseDragon(){ if(localStorage.getItem("boundByFireWildcard")==="true") return wildcard; const p=getPersonality(); return dragons.map(d=>({d,score:Object.entries(d.weights).reduce((n,[k,w])=>n+(p[k]||0)*w,0)})).sort((a,b)=>b.score-a.score)[0].d; }
+document.getElementById("revealDragonButton").addEventListener("click",()=>{ const d=chooseDragon(), riderData=JSON.parse(localStorage.getItem("boundByFireRider")||"{}"); document.getElementById("choosingScreen").style.display="none"; document.getElementById("dragonRevealScreen").style.display="flex"; document.getElementById("dragonName").textContent=d.name; document.getElementById("dragonType").textContent=d.type; const img=document.getElementById("dragonPortrait"); img.src=d.img; img.style.display="block"; img.onerror=()=>img.style.display="none"; document.getElementById("dragonRevealStory").innerHTML=`<p>The chamber goes still.</p><p><strong>${d.name}</strong> steps forward.</p><p>${d.desc}</p><p>The dragon lowers its head before ${riderData.name||"you"}.</p><p>Not obedience. An invitation.</p><p>When your hand touches scale, fire races through the bond—and for the first time you understand the truth of the Academy.</p><p><strong>You were never here to prove you deserved a dragon.</strong></p><p><strong>You were here so a dragon could decide whether you deserved them.</strong></p>`; window.scrollTo(0,0); });
+document.getElementById("restartGame").addEventListener("click",()=>{ ["boundByFirePersonality","boundByFireChoiceStyles","boundByFireProfessorWarned","boundByFireWildcard","boundByFireTrialOneChoice","boundByFireTrialTwoChoice","boundByFireTrialThreeChoice","boundByFireTrialFourChoice","boundByFireTrialFiveChoice"].forEach(k=>localStorage.removeItem(k)); location.reload(); });
+
 </script>
 </body>
 </html>
