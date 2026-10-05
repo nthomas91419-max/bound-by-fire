@@ -458,6 +458,68 @@
   opacity: 0.85;
 }
 
+    /* ========== TRIAL RESULT SCREEN ========== */
+
+#trialOneResultScreen {
+  display: none;
+  min-height: 100vh;
+  width: 100%;
+  padding: 70px 24px;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(92, 32, 14, 0.35),
+      rgba(5, 5, 5, 0.96) 70%
+    );
+
+  color: #f3e7d3;
+}
+
+#trialOneResultScreen .trial-container {
+  max-width: 800px;
+}
+
+#trialResultStory {
+  font-size: 1.12rem;
+  line-height: 1.9;
+  margin: 30px 0;
+}
+
+.trial-continue {
+  display: block;
+  margin: 35px auto 0;
+  padding: 16px 42px;
+
+  background: rgba(91, 30, 12, 0.95);
+  border: 1px solid #d8782c;
+
+  color: #f4b65d;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.trial-continue:hover {
+  transform: translateY(-2px);
+  background: rgba(126, 42, 15, 0.98);
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.45),
+    0 0 20px rgba(198, 83, 28, 0.2);
+}
+
 /* Mobile Trial Layout */
 
 @media (max-width: 700px) {
@@ -901,6 +963,38 @@
   </div>
 </section>
 
+  <!-- ========== TRIAL I CONSEQUENCE ========== -->
+
+<section id="trialOneResultScreen">
+
+  <div class="trial-container">
+
+    <div class="trial-number">
+      THE CROSSING
+    </div>
+
+    <h2 id="trialResultTitle" class="trial-title">
+      YOUR CHOICE HAS BEEN MADE
+    </h2>
+
+    <div class="trial-divider">◆</div>
+
+    <div id="trialResultStory" class="trial-story">
+      <!-- The consequence story will appear here -->
+    </div>
+
+    <div class="trial-whisper">
+      The dragons are watching.
+    </div>
+
+    <button id="continueAfterTrialOne" class="trial-continue">
+      CONTINUE
+    </button>
+
+  </div>
+
+</section>
+
   <script>
 
     /* ---------- ELEMENTS ---------- */
@@ -1261,6 +1355,211 @@
   window.scrollTo(0, 0);
 }, 800);
     });
+
+    /* ========== TRIAL I CHOICE SYSTEM ========== */
+
+const trialOneResultScreen =
+  document.getElementById("trialOneResultScreen");
+
+const trialResultTitle =
+  document.getElementById("trialResultTitle");
+
+const trialResultStory =
+  document.getElementById("trialResultStory");
+
+const continueAfterTrialOne =
+  document.getElementById("continueAfterTrialOne");
+
+const trialOneChoices =
+  document.querySelectorAll("#trialOneScreen .trial-choice");
+
+
+const trialOneConsequences = {
+
+  "TURN BACK": {
+    title: "YOU TURN BACK",
+    story: `
+      <p>The wind fights you the moment you turn.</p>
+
+      <p>You drop to your knees at the edge and reach for the fallen rider.
+      Their fingers are already slipping.</p>
+
+      <p>Your hand closes around their wrist.</p>
+
+      <p>For one terrible second, their weight pulls you toward the gorge.</p>
+
+      <p>Then another rider catches your shoulder.</p>
+
+      <p>Together, you drag them back onto the ancient stone.</p>
+
+      <p>The instructors say nothing.</p>
+
+      <p>But somewhere high above the clouds, something enormous circles once.</p>
+    `,
+    scores: {
+      compassion: 3,
+      loyalty: 2,
+      courage: 2
+    }
+  },
+
+
+  "ACT WITHOUT THINKING": {
+    title: "YOU MOVE",
+    story: `
+      <p>You do not think.</p>
+
+      <p>You drop low and throw yourself toward the edge.</p>
+
+      <p>Your hand catches the rider's wrist just before their fingers disappear.</p>
+
+      <p>The force nearly tears your shoulder from its socket.</p>
+
+      <p>For a heartbeat, both of you hang between stone and sky.</p>
+
+      <p>Then you pull.</p>
+
+      <p>The rider crashes onto the crossing beside you.</p>
+
+      <p>Above the mountain, a distant roar rolls through the clouds.</p>
+    `,
+    scores: {
+      courage: 3,
+      instinct: 3,
+      aggression: 1
+    }
+  },
+
+
+  "FIND ANOTHER WAY": {
+    title: "YOU SEE WHAT OTHERS MISS",
+    story: `
+      <p>You force yourself not to rush.</p>
+
+      <p>The crossing is narrow. The wind is violent. One wrong movement could send two riders into the gorge.</p>
+
+      <p>You scan the ancient stone.</p>
+
+      <p>There.</p>
+
+      <p>A broken length of training rope lies caught beneath a nearby marker.</p>
+
+      <p>You call out instructions. Two riders anchor themselves while you secure the rope and lower it toward the fallen rider.</p>
+
+      <p>Seconds later, they are pulled safely onto the crossing.</p>
+
+      <p>One of the instructors raises an eyebrow.</p>
+
+      <p>Far above, something with wings changes direction.</p>
+    `,
+    scores: {
+      intellect: 3,
+      caution: 2,
+      charisma: 2
+    }
+  },
+
+
+  "KEEP MOVING": {
+    title: "YOU DO NOT TURN",
+    story: `
+      <p>You hear the rider struggling behind you.</p>
+
+      <p>You keep walking.</p>
+
+      <p>The trial has rules. Every person standing on this mountain chose to be here.</p>
+
+      <p>Your next step is steady.</p>
+
+      <p>Then another.</p>
+
+      <p>Behind you, someone else reaches the fallen rider.</p>
+
+      <p>The instructors watch you longer than they watch the rescue.</p>
+
+      <p>You cannot tell whether that is approval or warning.</p>
+
+      <p>High in the clouds, a pair of unseen wings beats once.</p>
+    `,
+    scores: {
+      ambition: 3,
+      independence: 3,
+      caution: 1
+    }
+  }
+
+};
+
+
+trialOneChoices.forEach(function(choice) {
+
+  choice.addEventListener("click", function() {
+
+    const choiceTitle =
+      choice.querySelector(".choice-title").textContent.trim();
+
+    const consequence =
+      trialOneConsequences[choiceTitle];
+
+    if (!consequence) {
+      return;
+    }
+
+
+    let personality =
+      JSON.parse(
+        localStorage.getItem("boundByFirePersonality")
+      );
+
+
+    if (!personality) {
+      return;
+    }
+
+
+    Object.keys(consequence.scores).forEach(function(trait) {
+
+      personality[trait] +=
+        consequence.scores[trait];
+
+    });
+
+
+    localStorage.setItem(
+      "boundByFirePersonality",
+      JSON.stringify(personality)
+    );
+
+
+    localStorage.setItem(
+      "boundByFireTrialOneChoice",
+      choiceTitle
+    );
+
+
+    trialResultTitle.textContent =
+      consequence.title;
+
+    trialResultStory.innerHTML =
+      consequence.story;
+
+
+    trialOneScreen.style.display = "none";
+
+    trialOneResultScreen.style.display = "flex";
+
+    window.scrollTo(0, 0);
+
+  });
+
+});
+
+
+continueAfterTrialOne.addEventListener("click", function() {
+
+  alert("Trial II is coming next.");
+
+});
     
 
   </script>
