@@ -15,144 +15,308 @@
 
     body {
       min-height: 100vh;
-      background:
-        radial-gradient(circle at 50% 80%, #5c1c0b 0%, #1a0d0a 30%, #050505 70%);
-      color: #f5efe6;
+      background: #050505;
       font-family: Georgia, "Times New Roman", serif;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      text-align: center;
       overflow: hidden;
     }
 
-    .game-container {
-      width: 90%;
-      max-width: 900px;
-      padding: 40px 20px;
+    #titleScreen {
+      min-height: 100vh;
+
+      background-image:
+        linear-gradient(
+          rgba(0,0,0,0.05),
+          rgba(0,0,0,0.25)
+        ),
+        url("bound-by-fire-title.png");
+
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+
+      padding-bottom: 8vh;
     }
 
-    .dragon-symbol {
-      font-size: 70px;
-      margin-bottom: 20px;
-      animation: breathe 3s ease-in-out infinite;
-    }
+    #enterButton {
+      background: rgba(35, 8, 4, 0.85);
 
-    h1 {
-      font-size: clamp(50px, 10vw, 100px);
-      letter-spacing: 8px;
-      text-transform: uppercase;
+      color: #f3c985;
 
-      background: linear-gradient(
-        180deg,
-        #fff3c4,
-        #e99a46,
-        #9e2f16
-      );
+      border: 1px solid #d77a32;
 
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-
-      margin-bottom: 10px;
-    }
-
-    .subtitle {
-      font-size: 20px;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: #d6b995;
-      margin-bottom: 45px;
-    }
-
-    .tagline {
-      font-size: 24px;
-      font-style: italic;
-      margin-bottom: 45px;
-      line-height: 1.5;
-    }
-
-    button {
-      background: transparent;
-      color: #f5efe6;
-
-      border: 1px solid #d27736;
-      padding: 16px 42px;
+      padding: 18px 48px;
 
       font-family: Georgia, "Times New Roman", serif;
       font-size: 18px;
 
-      letter-spacing: 4px;
+      letter-spacing: 5px;
       text-transform: uppercase;
 
       cursor: pointer;
 
+      box-shadow:
+        0 0 15px rgba(255, 90, 20, 0.35);
+
       transition: 0.3s;
     }
 
-    button:hover {
-      background: #9e2f16;
-      border-color: #ffb15c;
+    #enterButton:hover {
+      background: rgba(115, 28, 12, 0.95);
+
       transform: scale(1.05);
+
+      box-shadow:
+        0 0 30px rgba(255, 90, 20, 0.7);
     }
 
-    #message {
-      margin-top: 35px;
-      min-height: 40px;
-      color: #d6b995;
+    #characterScreen {
+      min-height: 100vh;
+
+      background:
+        radial-gradient(
+          circle at top,
+          #3b160d,
+          #120806 45%,
+          #050505
+        );
+
+      color: #f3e7d3;
+
+      display: none;
+
+      justify-content: center;
+      align-items: center;
+
+      text-align: center;
+
+      padding: 30px;
+    }
+
+    .character-card {
+      width: 100%;
+      max-width: 650px;
+
+      border: 1px solid #7d3d24;
+
+      background: rgba(10, 5, 4, 0.92);
+
+      padding: 45px;
+
+      box-shadow:
+        0 0 40px rgba(145, 45, 15, 0.25);
+    }
+
+    .character-card h2 {
+      color: #e7b56c;
+
+      font-size: 38px;
+
+      letter-spacing: 5px;
+
+      text-transform: uppercase;
+
+      margin-bottom: 15px;
+    }
+
+    .character-card p {
+      color: #c8b6a0;
+
       font-size: 18px;
+
+      line-height: 1.6;
+
+      margin-bottom: 35px;
     }
 
-    @keyframes breathe {
-      0%, 100% {
-        transform: scale(1);
-        opacity: 0.7;
+    label {
+      display: block;
+
+      text-align: left;
+
+      color: #e7b56c;
+
+      margin-bottom: 8px;
+
+      letter-spacing: 2px;
+
+      text-transform: uppercase;
+
+      font-size: 13px;
+    }
+
+    input {
+      width: 100%;
+
+      padding: 14px;
+
+      margin-bottom: 25px;
+
+      background: #120b09;
+
+      border: 1px solid #63321f;
+
+      color: white;
+
+      font-size: 18px;
+
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    #continueButton {
+      width: 100%;
+
+      padding: 16px;
+
+      background: #702410;
+
+      border: 1px solid #d77a32;
+
+      color: #f7dfb2;
+
+      font-family: Georgia, "Times New Roman", serif;
+
+      letter-spacing: 4px;
+
+      text-transform: uppercase;
+
+      font-size: 16px;
+
+      cursor: pointer;
+    }
+
+    #continueButton:hover {
+      background: #9a3417;
+    }
+
+    #welcomeMessage {
+      margin-top: 25px;
+
+      color: #e7b56c;
+
+      font-style: italic;
+
+      min-height: 30px;
+    }
+
+    @media (max-width: 700px) {
+
+      #titleScreen {
+        background-position: center;
       }
 
-      50% {
-        transform: scale(1.08);
-        opacity: 1;
+      #enterButton {
+        padding: 15px 28px;
+        font-size: 14px;
+      }
+
+      .character-card {
+        padding: 30px 20px;
       }
     }
   </style>
 </head>
 
+
 <body>
 
-  <main class="game-container">
+  <!-- TITLE SCREEN -->
 
-    <div class="dragon-symbol">🐉</div>
+  <section id="titleScreen">
 
-    <h1>Bound by Fire</h1>
-
-    <div class="subtitle">
-      A Dragon Rider RPG
-    </div>
-
-    <p class="tagline">
-      You don't choose your dragon.<br>
-      Your choices do.
-    </p>
-
-    <button id="beginButton">
+    <button id="enterButton">
       Enter the Trials
     </button>
 
-    <p id="message"></p>
+  </section>
 
-  </main>
+
+  <!-- CHARACTER CREATION -->
+
+  <section id="characterScreen">
+
+    <div class="character-card">
+
+      <h2>Create Your Rider</h2>
+
+      <p>
+        Before the dragons know your name,
+        the trials must discover who you are.
+      </p>
+
+      <label for="riderName">
+        Rider Name
+      </label>
+
+      <input
+        type="text"
+        id="riderName"
+        placeholder="Enter your name"
+        maxlength="30"
+      >
+
+      <button id="continueButton">
+        Begin Your Story
+      </button>
+
+      <div id="welcomeMessage"></div>
+
+    </div>
+
+  </section>
+
 
   <script>
-    const beginButton = document.getElementById("beginButton");
-    const message = document.getElementById("message");
 
-    beginButton.addEventListener("click", function () {
-      message.textContent =
-        "Your choices will reveal who you are. And something is waiting to see what you become.";
+    const titleScreen =
+      document.getElementById("titleScreen");
 
-      beginButton.textContent = "Begin";
+    const characterScreen =
+      document.getElementById("characterScreen");
+
+    const enterButton =
+      document.getElementById("enterButton");
+
+    const continueButton =
+      document.getElementById("continueButton");
+
+    const riderName =
+      document.getElementById("riderName");
+
+    const welcomeMessage =
+      document.getElementById("welcomeMessage");
+
+
+    enterButton.addEventListener("click", function () {
+
+      titleScreen.style.display = "none";
+
+      characterScreen.style.display = "flex";
+
     });
+
+
+    continueButton.addEventListener("click", function () {
+
+      const name = riderName.value.trim();
+
+      if (name === "") {
+
+        welcomeMessage.textContent =
+          "Every rider has a name.";
+
+        return;
+      }
+
+      welcomeMessage.textContent =
+        name +
+        ", the dragons are already watching.";
+
+    });
+
   </script>
 
 </body>
