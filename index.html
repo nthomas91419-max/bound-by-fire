@@ -615,6 +615,120 @@
   </section>
 
 
+  <!-- ========== TRIAL I: THE CROSSING ========== -->
+
+<section id="trialOneScreen" class="game-screen" style="display: none;">
+  <div class="trial-container">
+
+    <div class="trial-number">TRIAL I</div>
+
+    <h1>THE CROSSING</h1>
+
+    <div class="trial-divider">◆</div>
+
+    <div class="story-text">
+      <p>The wind hits first.</p>
+
+      <p>
+        It tears across the mountain pass hard enough to steal the breath
+        from your lungs.
+      </p>
+
+      <p>
+        Ahead, a narrow stone crossing stretches across a gorge so deep
+        that the bottom disappears into darkness.
+      </p>
+
+      <p>
+        One by one, the riders step onto the ancient stone.
+      </p>
+
+      <p>
+        No railings. No ropes. No second chances.
+      </p>
+
+      <p>
+        You are halfway across when a scream cuts through the wind.
+      </p>
+
+      <p>
+        A rider behind you has slipped.
+      </p>
+
+      <p>
+        One hand clings desperately to the edge.
+      </p>
+
+      <p class="story-emphasis">
+        The instructors do not move.
+      </p>
+
+      <p class="story-emphasis">
+        They are watching.
+      </p>
+    </div>
+
+    <div class="trial-question">
+      What do you do?
+    </div>
+
+    <div class="trial-choices">
+
+      <button class="trial-choice"
+        data-compassion="3"
+        data-courage="2"
+        data-loyalty="1"
+        data-caution="-1">
+        <span class="choice-title">TURN BACK</span>
+        <span class="choice-description">
+          Go back for the fallen rider. Whatever happens next, you refuse
+          to leave them hanging.
+        </span>
+      </button>
+
+      <button class="trial-choice"
+        data-courage="2"
+        data-instinct="2"
+        data-aggression="1"
+        data-caution="-1">
+        <span class="choice-title">ACT WITHOUT THINKING</span>
+        <span class="choice-description">
+          Drop low and lunge for their wrist before anyone else can react.
+        </span>
+      </button>
+
+      <button class="trial-choice"
+        data-intellect="2"
+        data-caution="3"
+        data-charisma="1">
+        <span class="choice-title">FIND ANOTHER WAY</span>
+        <span class="choice-description">
+          Study the crossing and call out a plan. Rushing toward them may
+          send both of you into the gorge.
+        </span>
+      </button>
+
+      <button class="trial-choice"
+        data-ambition="2"
+        data-independence="2"
+        data-aggression="1"
+        data-compassion="-2">
+        <span class="choice-title">KEEP MOVING</span>
+        <span class="choice-description">
+          The trial has rules. Every rider knew the risk when they stepped
+          onto the crossing.
+        </span>
+      </button>
+
+    </div>
+
+    <div class="trial-whisper">
+      Somewhere beyond the clouds, wings shift against the wind.
+    </div>
+
+  </div>
+</section>
+
   <script>
 
     /* ---------- ELEMENTS ---------- */
@@ -628,6 +742,9 @@
     const appearanceScreen =
       document.getElementById("appearanceScreen");
 
+    const trialOneScreen =
+  document.getElementById("trialOneScreen");
+    
     const enterButton =
       document.getElementById("enterButton");
 
@@ -966,7 +1083,13 @@
         rider.name +
         ", your name has been entered into the Book of Riders.";
 
+      setTimeout(function() {
+  appearanceScreen.style.display = "none";
+  trialOneScreen.style.display = "flex";
+  window.scrollTo(0, 0);
+}, 800);
     });
+    
 
   </script>
 
