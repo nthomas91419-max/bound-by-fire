@@ -311,7 +311,8 @@
     
 /* ========== TRIAL SCREENS ========== */
 
-#trialOneScreen {
+#trialOneScreen,
+#trialTwoScreen {
   display: none;
   min-height: 100vh;
   width: 100%;
@@ -460,7 +461,8 @@
 
     /* ========== TRIAL RESULT SCREEN ========== */
 
-#trialOneResultScreen {
+#trialOneResultScreen,
+#trialTwoResultScreen {
   display: none;
   min-height: 100vh;
   width: 100%;
@@ -478,7 +480,8 @@
   color: #f3e7d3;
 }
 
-#trialOneResultScreen .trial-container {
+#trialOneResultScreen .trial-container,
+#trialTwoResultScreen .trial-container {
   max-width: 800px;
 }
 
@@ -995,6 +998,123 @@
 
 </section>
 
+  <!-- ========== TRIAL II: THE COMMAND ========== -->
+
+<section id="trialTwoScreen">
+
+  <div class="trial-container">
+
+    <div class="trial-number">TRIAL II</div>
+
+    <h2 class="trial-title">THE COMMAND</h2>
+
+    <div class="trial-divider">◆</div>
+
+    <div class="trial-story">
+
+      <p>The training yard smells of steel, sweat, and smoke.</p>
+
+      <p>Across from you stands another candidate, weapon raised.</p>
+
+      <p>The command is simple.</p>
+
+      <p><strong>Fight.</strong></p>
+
+      <p>Steel crashes against steel.</p>
+
+      <p>Your opponent is fast, but something is wrong.</p>
+
+      <p>They favor one leg. Their breathing is uneven. Beneath the leather at their side, a dark stain is spreading.</p>
+
+      <p>They are injured.</p>
+
+      <p>You hesitate.</p>
+
+      <p>The instructor notices.</p>
+
+      <p>His voice cuts across the yard.</p>
+
+      <p><strong>"Finish it."</strong></p>
+
+    </div>
+
+    <div class="trial-question">
+      WHAT DO YOU DO?
+    </div>
+
+    <div class="trial-choices">
+
+      <button class="trial-choice">
+        <span class="choice-title">OBEY THE ORDER</span>
+        <span class="choice-description">
+          Attack. The Academy is not interested in excuses.
+        </span>
+      </button>
+
+      <button class="trial-choice">
+        <span class="choice-title">REFUSE</span>
+        <span class="choice-description">
+          Lower your weapon. You will not hurt someone simply because you were told to.
+        </span>
+      </button>
+
+      <button class="trial-choice">
+        <span class="choice-title">CHALLENGE THE INSTRUCTOR</span>
+        <span class="choice-description">
+          Call out what everyone can see. If the instructor wants this fight finished, make them defend the order.
+        </span>
+      </button>
+
+      <button class="trial-choice">
+        <span class="choice-title">MAKE IT LOOK REAL</span>
+        <span class="choice-description">
+          Keep fighting, but control every strike. Obey the command without giving the instructor what they really want.
+        </span>
+      </button>
+
+    </div>
+
+    <div class="trial-whisper">
+      Somewhere beyond the walls, something ancient listens.
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ========== TRIAL II CONSEQUENCE ========== -->
+
+<section id="trialTwoResultScreen">
+
+  <div class="trial-container">
+
+    <div class="trial-number">
+      THE COMMAND
+    </div>
+
+    <h2 id="trialTwoResultTitle" class="trial-title">
+      YOUR CHOICE HAS BEEN MADE
+    </h2>
+
+    <div class="trial-divider">◆</div>
+
+    <div id="trialTwoResultStory" class="trial-story">
+      <!-- Trial II consequence appears here -->
+    </div>
+
+    <div class="trial-whisper">
+      Another judgment has been made.
+    </div>
+
+    <button id="continueAfterTrialTwo" class="trial-continue">
+      CONTINUE
+    </button>
+
+  </div>
+
+</section>
+
   <script>
 
     /* ---------- ELEMENTS ---------- */
@@ -1010,6 +1130,9 @@
 
     const trialOneScreen =
   document.getElementById("trialOneScreen");
+
+    const trialTwoScreen =
+  document.getElementById("trialTwoScreen");
     
     const enterButton =
       document.getElementById("enterButton");
@@ -1557,12 +1680,218 @@ trialOneChoices.forEach(function(choice) {
 
 continueAfterTrialOne.addEventListener("click", function() {
 
-  alert("Trial II is coming next.");
+  trialOneResultScreen.style.display = "none";
+  trialTwoScreen.style.display = "flex";
+
+  window.scrollTo(0, 0);
 
 });
-    
+    /* ========== TRIAL II CHOICE SYSTEM ========== */
 
-  </script>
+const trialTwoResultScreen =
+  document.getElementById("trialTwoResultScreen");
 
-</body>
-</html>
+const trialTwoResultTitle =
+  document.getElementById("trialTwoResultTitle");
+
+const trialTwoResultStory =
+  document.getElementById("trialTwoResultStory");
+
+const continueAfterTrialTwo =
+  document.getElementById("continueAfterTrialTwo");
+
+const trialTwoChoices =
+  document.querySelectorAll("#trialTwoScreen .trial-choice");
+
+
+const trialTwoConsequences = {
+
+  "OBEY THE ORDER": {
+    title: "YOU OBEY",
+    story: `
+      <p>You tighten your grip.</p>
+
+      <p>The instructor gave an order.</p>
+
+      <p>You strike.</p>
+
+      <p>Your opponent barely raises their weapon in time. The impact drives them backward, injured leg buckling beneath them.</p>
+
+      <p>You do not stop until the instructor raises a hand.</p>
+
+      <p>"Enough."</p>
+
+      <p>The yard falls silent.</p>
+
+      <p>Your opponent looks at you differently now.</p>
+
+      <p>So does the instructor.</p>
+
+      <p>Beyond the academy walls, something powerful answers with a low, distant growl.</p>
+    `,
+    scores: {
+      ambition: 3,
+      aggression: 2,
+      loyalty: 2
+    }
+  },
+
+
+  "REFUSE": {
+    title: "YOU LOWER YOUR WEAPON",
+    story: `
+      <p>Your blade drops to your side.</p>
+
+      <p>"No."</p>
+
+      <p>The word carries farther across the training yard than you expect.</p>
+
+      <p>The instructor's expression hardens.</p>
+
+      <p>"That was an order."</p>
+
+      <p>You meet their gaze.</p>
+
+      <p>"Then give me a better one."</p>
+
+      <p>No one moves.</p>
+
+      <p>Your injured opponent slowly lowers their weapon.</p>
+
+      <p>Somewhere beyond the walls, claws scrape against ancient stone.</p>
+    `,
+    scores: {
+      compassion: 3,
+      independence: 3,
+      courage: 2
+    }
+  },
+
+
+  "CHALLENGE THE INSTRUCTOR": {
+    title: "YOU CHALLENGE THE ORDER",
+    story: `
+      <p>You turn away from your opponent.</p>
+
+      <p>Not toward safety.</p>
+
+      <p>Toward the instructor.</p>
+
+      <p>"They're injured."</p>
+
+      <p>The instructor's eyes narrow.</p>
+
+      <p>"And?"</p>
+
+      <p>You raise your voice so every rider in the yard can hear.</p>
+
+      <p>"If beating someone who can barely stand proves I'm worthy, then this trial proves nothing."</p>
+
+      <p>A dangerous silence follows.</p>
+
+      <p>Then, somewhere high above the academy, enormous wings thunder through the air.</p>
+    `,
+    scores: {
+      courage: 3,
+      charisma: 3,
+      aggression: 1
+    }
+  },
+
+
+  "MAKE IT LOOK REAL": {
+    title: "YOU PLAY THE GAME",
+    story: `
+      <p>You attack.</p>
+
+      <p>At least, that is what the instructor sees.</p>
+
+      <p>Your blade crashes against your opponent's weapon, but every strike is measured.</p>
+
+      <p>You force them backward without touching the injured side.</p>
+
+      <p>When they stumble, you move close enough to whisper.</p>
+
+      <p>"Fall."</p>
+
+      <p>They understand immediately.</p>
+
+      <p>Your next strike stops inches from their chest as they collapse onto the sand.</p>
+
+      <p>The instructor nods.</p>
+
+      <p>Your opponent hides a smile.</p>
+
+      <p>Beyond the walls, something ancient makes a sound almost like approval.</p>
+    `,
+    scores: {
+      intellect: 3,
+      instinct: 2,
+      compassion: 2
+    }
+  }
+
+};
+
+
+trialTwoChoices.forEach(function(choice) {
+
+  choice.addEventListener("click", function() {
+
+    const choiceTitle =
+      choice.querySelector(".choice-title").textContent.trim();
+
+    const consequence =
+      trialTwoConsequences[choiceTitle];
+
+    if (!consequence) {
+      return;
+    }
+
+    let personality =
+      JSON.parse(
+        localStorage.getItem("boundByFirePersonality")
+      );
+
+    if (!personality) {
+      return;
+    }
+
+    Object.keys(consequence.scores).forEach(function(trait) {
+
+      personality[trait] +=
+        consequence.scores[trait];
+
+    });
+
+    localStorage.setItem(
+      "boundByFirePersonality",
+      JSON.stringify(personality)
+    );
+
+    localStorage.setItem(
+      "boundByFireTrialTwoChoice",
+      choiceTitle
+    );
+
+    trialTwoResultTitle.textContent =
+      consequence.title;
+
+    trialTwoResultStory.innerHTML =
+      consequence.story;
+
+    trialTwoScreen.style.display = "none";
+    trialTwoResultScreen.style.display = "flex";
+
+    window.scrollTo(0, 0);
+
+  });
+
+});
+
+
+continueAfterTrialTwo.addEventListener("click", function() {
+
+  alert("Trial III is coming next.");
+
+});
