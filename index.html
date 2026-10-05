@@ -848,6 +848,30 @@
           Let the old kingdoms choose a name for you.
         </p>
 
+       <p class="intro">
+    First, choose the kind of name you want.
+</p>
+
+<div class="choice-grid" id="nameGenderChoices">
+
+    <button class="choice-button name-gender" data-gender="feminine">
+        Feminine
+    </button>
+
+    <button class="choice-button name-gender" data-gender="masculine">
+        Masculine
+    </button>
+
+    <button class="choice-button name-gender" data-gender="neutral">
+        Neutral
+    </button>
+
+</div>
+
+<p class="intro">
+    Then choose the tradition that shaped it.
+</p>
+        
         <div class="choice-grid">
 
           <button class="choice-button name-style" data-style="gothic">
@@ -1447,6 +1471,11 @@
     const nameStyleButtons =
       document.querySelectorAll(".name-style");
 
+    const nameGenderButtons =
+    document.querySelectorAll(".name-gender");
+
+let selectedNameGender = "neutral";
+
     const continueToAppearance =
       document.getElementById("continueToAppearance");
 
@@ -1514,12 +1543,23 @@
 
       gothic: {
 
-        first: [
-          "Vesper", "Lucien", "Veyra", "Morrin",
-          "Elara", "Riven", "Seraphine", "Corvin",
-          "Nyx", "Evren", "Isolde", "Cassian",
-          "Lenore", "Dorian", "Vara", "Malric"
-        ],
+        first: {
+    feminine: [
+        "Veyra", "Elara", "Seraphine", "Isolde",
+        "Lenore", "Vara", "Mirelle", "Selene",
+        "Evelith", "Rosara", "Velora", "Nyssara"
+    ],
+    masculine: [
+        "Lucien", "Morrin", "Corvin", "Cassian",
+        "Dorian", "Malric", "Varek", "Draven",
+        "Alaric", "Soren", "Theron", "Vaelor"
+    ],
+    neutral: [
+        "Vesper", "Riven", "Nyx", "Evren",
+        "Ash", "Vale", "Wren", "Sable",
+        "Rowan", "Ember", "Rook", "Haven"
+    ]
+},
 
         last: [
           "Thorne", "Morcant", "Voss", "Blackmere",
@@ -1530,12 +1570,23 @@
 
       nordic: {
 
-        first: [
-          "Eira", "Soren", "Astrid", "Torren",
-          "Freya", "Stellan", "Kaia", "Leif",
-          "Yrsa", "Runa", "Ivar", "Sigrid",
-          "Kellan", "Brynja", "Hakon", "Tova"
-        ],
+        first: {
+    feminine: [
+        "Eira", "Astrid", "Freya", "Stellan",
+        "Kaia", "Yrsa", "Runa", "Sigrid",
+        "Brynja", "Tova", "Ingrid", "Liv"
+    ],
+    masculine: [
+        "Soren", "Torren", "Leif", "Ivar",
+        "Kellan", "Hakon", "Bjorn", "Erik",
+        "Ragnar", "Sten", "Vidar", "Magnus"
+    ],
+    neutral: [
+        "Storm", "Ravn", "Skye", "Rune",
+        "Frost", "Winter", "Veyr", "Hale",
+        "Kari", "Ari", "Sol", "Ember"
+    ]
+},
 
         last: [
           "Skeld", "Haldor", "Vargan", "Stormvein",
@@ -1546,12 +1597,23 @@
 
       arcane: {
 
-        first: [
-          "Kaelith", "Aevra", "Nyra", "Vaelis",
-          "Elowyn", "Theron", "Saeryn", "Astra",
-          "Caelen", "Ilyra", "Orien", "Veylin",
-          "Lyssara", "Aeron", "Sylas", "Maevyn"
-        ],
+        first: {
+    feminine: [
+        "Aevara", "Nyra", "Wealis", "Saeryn",
+        "Astra", "Caelen", "Ilyra", "Veylin",
+        "Maevyn", "Elowyn", "Lysara", "Thalen"
+    ],
+    masculine: [
+        "Kaelith", "Theron", "Aeron", "Orien",
+        "Sylas", "Vaelor", "Arveth", "Cael",
+        "Evren", "Zephyr", "Lucan", "Azriel"
+    ],
+    neutral: [
+        "Aether", "Vale", "Veyrin", "Solryn",
+        "Elaris", "Rune", "Echo", "Onyx",
+        "Nova", "Ashen", "Sable", "Ember"
+    ]
+},
 
         last: [
           "Vael", "Aevryn", "Arveth", "Elaris",
@@ -1586,15 +1648,30 @@
 
       }
 
-      riderName.value =
-        randomItem(names[chosenStyle].first) +
-        " " +
-        randomItem(names[chosenStyle].last);
+     riderName.value =
+    randomItem(names[chosenStyle].first[selectedNameGender]) +
+    " " +
+    randomItem(names[chosenStyle].last);
 
       welcomeMessage.textContent =
-        "The name feels strangely familiar.";
+    "The name feels strangely familiar.";
+}
 
-    }
+    nameGenderButtons.forEach(function(button) {
+
+    button.addEventListener("click", function() {
+
+        selectedNameGender = button.dataset.gender;
+
+        nameGenderButtons.forEach(function(item) {
+            item.classList.remove("active");
+        });
+
+        button.classList.add("active");
+generateName(selectedStyle);
+    });
+
+});
 
 
     nameStyleButtons.forEach(function(button) {
