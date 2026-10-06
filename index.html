@@ -237,7 +237,40 @@
       min-height: 25px;
     }
 
+    
+
     /* ---------- APPEARANCE ---------- */
+
+    /* ---------- RIDER PORTRAIT PREVIEW ---------- */
+
+#riderPreview {
+    width: 100%;
+    max-width: 360px;
+    height: 480px;
+    margin: 25px auto 35px;
+    position: relative;
+    overflow: hidden;
+
+    border: 1px solid #7d3a32;
+    background: radial-gradient(
+        circle at center,
+        #25130f 0%,
+        #100807 65%,
+        #050303 100%
+    );
+
+    box-shadow:
+        0 0 30px rgba(147, 65, 23, 0.22),
+        inset 0 0 30px rgba(0, 0, 0, 0.65);
+}
+
+#riderBaseImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+    display: block;
+}
 
     .appearance-section {
       margin-bottom: 30px;
@@ -1020,6 +1053,15 @@
         The dragons care little for appearances.
         The living do.
       </p>
+
+      <!-- RIDER PORTRAIT PREVIEW -->
+<div id="riderPreview">
+    <img
+        id="riderBaseImage"
+        src="riders/female/skin/female-athletic-fair.png"
+        alt="Your Rider"
+    >
+</div>
 
 
       <div class="appearance-section">
