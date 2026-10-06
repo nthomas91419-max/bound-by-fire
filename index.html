@@ -907,7 +907,106 @@
     </div>
 
   </section>
+<!-- BLOODLINE CREATOR -->
 
+<section id="bloodlineScreen" class="game-screen">
+
+    <div class="card">
+
+        <h2>What Blood Runs Through Your Veins?</h2>
+
+        <p class="intro">
+            Before the Academy. Before the Trials.
+            Before a dragon ever spoke your name...
+            <br><br>
+            <strong>You were already something.</strong>
+        </p>
+
+        <div class="choice-grid" id="bloodlineChoices">
+
+            <button class="choice-button bloodline-choice" data-bloodline="human">
+                <strong>HUMAN</strong><br>
+                <span>No ancient blood. No inherited magic.
+                Whatever power you possess, you made your own.</span>
+            </button>
+
+            <button class="choice-button bloodline-choice" data-bloodline="fae">
+                <strong>FAE</strong><br>
+                <span>Old magic remembers your blood—even when you don't.</span>
+            </button>
+
+            <button class="choice-button bloodline-choice" data-bloodline="witchborn">
+                <strong>WITCHBORN</strong><br>
+                <span>Magic isn't something you learned.
+                It has always known your name.</span>
+            </button>
+
+            <button class="choice-button bloodline-choice" data-bloodline="shifter">
+                <strong>SHIFTER</strong><br>
+                <span>Something wild lives beneath your skin.</span>
+            </button>
+
+        </div>
+
+
+        <!-- SHIFTER TYPE - hidden until Shifter is chosen -->
+
+        <div id="shifterOptions" style="display:none;">
+
+            <h3>What Waits Beneath Your Skin?</h3>
+
+            <p class="intro">
+                Your blood remembers another shape.
+            </p>
+
+            <div class="choice-grid">
+
+                <button class="choice-button shifter-choice" data-shifter="wolf">
+                    WOLF
+                </button>
+
+                <button class="choice-button shifter-choice" data-shifter="feline">
+                    FELINE
+                </button>
+
+                <button class="choice-button shifter-choice" data-shifter="bear">
+                    BEAR
+                </button>
+
+                <button class="choice-button shifter-choice" data-shifter="raven">
+                    RAVEN
+                </button>
+
+                <button class="choice-button shifter-choice" data-shifter="serpent">
+                    SERPENT
+                </button>
+
+                <button class="choice-button shifter-choice" data-shifter="fox">
+                    FOX
+                </button>
+
+                <button class="choice-button shifter-choice" data-shifter="unknown">
+                    UNKNOWN
+                </button>
+
+            </div>
+
+            <p id="shifterMessage" class="intro"></p>
+
+        </div>
+
+
+        <button id="continueToAppearanceFromBloodline"
+                class="main-button"
+                style="display:none;">
+            Continue to Appearance
+        </button>
+
+        <div id="bloodlineMessage"></div>
+
+    </div>
+
+</section>
 
   <!-- APPEARANCE CREATOR -->
 
@@ -1448,7 +1547,26 @@
       document.getElementById("titleScreen");
 
     const nameScreen =
-      document.getElementById("nameScreen");
+      document.getElementById("nameScreen");const bloodlineScreen =
+    document.getElementById("bloodlineScreen");
+
+const bloodlineButtons =
+    document.querySelectorAll(".bloodline-choice");
+
+const shifterOptions =
+    document.getElementById("shifterOptions");
+
+const shifterButtons =
+    document.querySelectorAll(".shifter-choice");
+
+const shifterMessage =
+    document.getElementById("shifterMessage");
+
+const bloodlineMessage =
+    document.getElementById("bloodlineMessage");
+
+const continueToAppearanceFromBloodline =
+    document.getElementById("continueToAppearanceFromBloodline");
 
     const appearanceScreen =
       document.getElementById("appearanceScreen");
@@ -1516,15 +1634,17 @@ let selectedNameGender = "neutral";
     /* ---------- RIDER DATA ---------- */
 
     const rider = {
-      name: "",
-      pronouns: "",
-      build: "",
-      skinTone: "",
-      eyes: "",
-      hairColor: "",
-      hairStyle: "",
-      feature: ""
-    };
+    name: "",
+    bloodline: "",
+    shifterType: "",
+    pronouns: "",
+    build: "",
+    skinTone: "",
+    eyes: "",
+    hairColor: "",
+    hairStyle: "",
+    feature: ""
+};
 
 
     /* ---------- TITLE ---------- */
@@ -1719,11 +1839,107 @@ generateName(selectedStyle);
       rider.name = name;
 
       nameScreen.style.display = "none";
-      appearanceScreen.style.display = "flex";
+bloodlineScreen.style.display = "flex";
 
       window.scrollTo(0, 0);
 
     });
+
+    /* ---------- BLOODLINE SELECTION ---------- */
+
+bloodlineButtons.forEach(function(button) {
+
+    button.addEventListener("click", function() {
+
+        bloodlineButtons.forEach(function(item) {
+            item.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        rider.bloodline = button.dataset.bloodline;
+        rider.shifterType = "";
+
+        shifterButtons.forEach(function(item) {
+            item.classList.remove("active");
+        });
+
+        shifterMessage.textContent = "";
+
+        if (rider.bloodline === "shifter") {
+
+            shifterOptions.style.display = "block";
+            continueToAppearanceFromBloodline.style.display = "none";
+
+            bloodlineMessage.textContent =
+                "Your blood stirs. Something beneath the surface answers.";
+
+        } else {
+
+            shifterOptions.style.display = "none";
+            continueToAppearanceFromBloodline.style.display = "inline-block";
+
+            if (rider.bloodline === "human") {
+                bloodlineMessage.textContent =
+                    "No ancient blood answers for you. Whatever comes next will be yours alone.";
+            }
+
+            if (rider.bloodline === "fae") {
+                bloodlineMessage.textContent =
+                    "Something ancient recognizes you.";
+            }
+
+            if (rider.bloodline === "witchborn") {
+                bloodlineMessage.textContent =
+                    "Magic has always known your name.";
+            }
+
+        }
+
+    });
+
+});
+
+
+shifterButtons.forEach(function(button) {
+
+    button.addEventListener("click", function() {
+
+        shifterButtons.forEach(function(item) {
+            item.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        rider.shifterType = button.dataset.shifter;
+
+        continueToAppearanceFromBloodline.style.display = "inline-block";
+
+        if (rider.shifterType === "unknown") {
+
+            shifterMessage.textContent =
+                "You have always known something lives beneath your skin. It simply hasn't introduced itself yet.";
+
+        } else {
+
+            shifterMessage.textContent =
+                "The creature beneath your skin recognizes its name.";
+
+        }
+
+    });
+
+});
+
+
+continueToAppearanceFromBloodline.addEventListener("click", function() {
+
+    bloodlineScreen.style.display = "none";
+    appearanceScreen.style.display = "flex";
+
+    window.scrollTo(0, 0);
+
+});
 
 
     /* ---------- SELECTABLE OPTIONS ---------- */
