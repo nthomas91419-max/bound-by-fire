@@ -264,12 +264,33 @@
         inset 0 0 30px rgba(0, 0, 0, 0.65);
 }
 
-#riderBaseImage {
+.rider-layer {
+    position: absolute;
     width: 100%;
     height: 100%;
+    left: 0;
+    top: 0;
     object-fit: contain;
     object-position: center bottom;
+    pointer-events: none;
+}
+
+.rider-base-layer {
+    position: relative;
     display: block;
+    z-index: 1;
+}
+
+#riderHairLayer {
+    z-index: 2;
+}
+
+#riderEyeLayer {
+    z-index: 3;
+}
+
+#riderFeatureLayer {
+    z-index: 4;
 }
 
     .appearance-section {
@@ -1056,13 +1077,21 @@
 
       <!-- RIDER PORTRAIT PREVIEW -->
 <div id="riderPreview">
+
+    <!-- Base rider / body build -->
     <img
         id="riderBaseImage"
+        class="rider-layer rider-base-layer"
         src="riders/female/skin/female-athletic-fair.png"
         alt="Your Rider"
     >
-</div>
 
+    <!-- Future transparent customization layers -->
+    <img id="riderHairLayer" class="rider-layer" alt="">
+    <img id="riderEyeLayer" class="rider-layer" alt="">
+    <img id="riderFeatureLayer" class="rider-layer" alt="">
+
+</div>
 
       <div class="appearance-section">
 
@@ -1653,6 +1682,8 @@ let selectedNameGender = "neutral";
 
     const skinTone =
       document.getElementById("skinTone");
+    
+    let selectedSkinTone = "";
 
     const eyeColor =
       document.getElementById("eyeColor");
@@ -2043,7 +2074,15 @@ buildButtons.forEach(function(button) {
     });
 
 });
+/* ---------- LIVE RIDER SKIN TONE PREVIEW ---------- */
 
+skinTone.addEventListener("change", function() {
+
+    selectedSkinTone = skinTone.value;
+
+    rider.skinTone = selectedSkinTone;
+
+});
 
     /* ---------- BACK ---------- */
 
