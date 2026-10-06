@@ -1648,6 +1648,9 @@ let selectedNameGender = "neutral";
     const buildButtons =
       document.querySelectorAll(".build");
 
+    const riderBaseImage =
+    document.getElementById("riderBaseImage");
+
     const skinTone =
       document.getElementById("skinTone");
 
@@ -2017,6 +2020,29 @@ continueToAppearanceFromBloodline.addEventListener("click", function() {
       buildButtons,
       "build"
     );
+
+    /* ---------- LIVE RIDER BUILD PREVIEW ---------- */
+
+buildButtons.forEach(function(button) {
+
+    button.addEventListener("click", function() {
+
+        const selectedBuild = button.dataset.value;
+
+        const buildImages = {
+            slight: "riders/female/bases/female-slight.png",
+            athletic: "riders/female/bases/female-athletic.png",
+            broad: "riders/female/bases/female-broad.png",
+            curvy: "riders/female/bases/female-curvy.png"
+        };
+
+        if (buildImages[selectedBuild]) {
+            riderBaseImage.src = buildImages[selectedBuild];
+        }
+
+    });
+
+});
 
 
     /* ---------- BACK ---------- */
