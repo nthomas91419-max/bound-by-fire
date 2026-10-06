@@ -239,81 +239,9 @@
 
     
 
-    /* ---------- APPEARANCE ---------- */
+    /* ---------- RIDER IDENTITY ---------- */
 
-    /* ---------- RIDER PORTRAIT PREVIEW ---------- */
-
-#riderPreview {
-    width: 100%;
-    max-width: 360px;
-    height: 480px;
-    margin: 25px auto 35px;
-    position: relative;
-    overflow: hidden;
-
-    border: 1px solid #7d3a32;
-    background: radial-gradient(
-        circle at center,
-        #25130f 0%,
-        #100807 65%,
-        #050303 100%
-    );
-
-    box-shadow:
-        0 0 30px rgba(147, 65, 23, 0.22),
-        inset 0 0 30px rgba(0, 0, 0, 0.65);
-}
-
-.rider-layer {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    object-fit: contain;
-    object-position: center bottom;
-    pointer-events: none;
-}
-
-.rider-base-layer {
-    position: relative;
-    display: block;
-    z-index: 1;
-}
-
-#riderHairLayer {
-    z-index: 2;
-}
-
-#riderEyeLayer {
-    z-index: 3;
-}
-
-#riderFeatureLayer {
-    z-index: 4;
-}
-
-    .appearance-section {
-      margin-bottom: 30px;
-    }
-
-    .appearance-section:not(:first-of-type) {
-      border-top: 1px solid #321810;
-      padding-top: 25px;
-    }
-
-    .appearance-section p {
-      color: #8f7d6f;
-      font-size: 14px;
-      margin-bottom: 15px;
-      font-style: italic;
-    }
-
-    .two-column {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
+    .identity-note { text-align:center; color:#9f8c7b; font-style:italic; line-height:1.6; margin:-10px 0 28px; }
 
     .back-button {
       width: 100%;
@@ -1062,240 +990,26 @@
 
 </section>
 
-  <!-- APPEARANCE CREATOR -->
+  <!-- RIDER IDENTITY -->
 
   <section id="appearanceScreen" class="game-screen">
-
     <div class="card">
-
-      <h2>Shape Your Rider</h2>
-
-      <p class="intro">
-        The dragons care little for appearances.
-        The living do.
-      </p>
-
-      <!-- RIDER PORTRAIT PREVIEW -->
-<div id="riderPreview">
-
-    <!-- Base rider / body build -->
-    <img
-        id="riderBaseImage"
-        class="rider-layer rider-base-layer"
-        src="riders/female/skin/female-athletic-fair.png"
-        alt="Your Rider"
-    >
-
-    <!-- Future transparent customization layers -->
-    <img id="riderHairLayer" class="rider-layer" alt="">
-    <img id="riderEyeLayer" class="rider-layer" alt="">
-    <img id="riderFeatureLayer" class="rider-layer" alt="">
-
-</div>
-
+      <h2>Declare Yourself</h2>
+      <p class="intro">Before you face the dragons, tell the Academy how you are to be known.</p>
+      <p class="identity-note">Blood may shape you. The trials will reveal you.</p>
       <div class="appearance-section">
-
         <span class="field-title">Pronouns</span>
-
         <div class="choice-grid">
-
-          <button class="choice-button pronoun" data-value="she/her">
-            She / Her
-          </button>
-
-          <button class="choice-button pronoun" data-value="he/him">
-            He / Him
-          </button>
-
-          <button class="choice-button pronoun" data-value="they/them">
-            They / Them
-          </button>
-
-          <button class="choice-button pronoun" data-value="any">
-            Any
-          </button>
-
+          <button class="choice-button pronoun" data-value="she/her">She / Her</button>
+          <button class="choice-button pronoun" data-value="he/him">He / Him</button>
+          <button class="choice-button pronoun" data-value="they/them">They / Them</button>
+          <button class="choice-button pronoun" data-value="any">Any</button>
         </div>
-
       </div>
-
-
-      <div class="appearance-section">
-
-        <span class="field-title">Build</span>
-
-        <p>
-          This changes only how your rider is described.
-        </p>
-
-        <div class="choice-grid">
-
-          <button class="choice-button build" data-value="slight">
-            Slight
-          </button>
-
-          <button class="choice-button build" data-value="athletic">
-            Athletic
-          </button>
-
-          <button class="choice-button build" data-value="broad">
-            Broad
-          </button>
-
-          <button class="choice-button build" data-value="curvy">
-            Curvy
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <div class="appearance-section">
-
-        <div class="two-column">
-
-          <div>
-
-            <label for="skinTone">
-              Skin Tone
-            </label>
-
-            <select id="skinTone">
-              <option value="">Choose...</option>
-              <option>Porcelain</option>
-              <option>Fair</option>
-              <option>Light</option>
-              <option>Light-Medium</option>
-              <option>Medium</option>
-              <option>Olive</option>
-              <option>Tan</option>
-              <option>Brown</option>
-              <option>Deep Brown</option>
-              <option>Ebony</option>
-            </select>
-
-          </div>
-
-
-          <div>
-
-            <label for="eyeColor">
-              Eyes
-            </label>
-
-            <select id="eyeColor">
-              <option value="">Choose...</option>
-              <option>Brown</option>
-              <option>Hazel</option>
-              <option>Green</option>
-              <option>Blue</option>
-              <option>Gray</option>
-              <option>Amber</option>
-              <option>Violet</option>
-              <option>Silver</option>
-            </select>
-
-          </div>
-
-        </div>
-
-
-        <div class="two-column">
-
-          <div>
-
-            <label for="hairColor">
-              Hair Color
-            </label>
-
-            <select id="hairColor">
-              <option value="">Choose...</option>
-              <option>Black</option>
-              <option>Dark Brown</option>
-              <option>Brown</option>
-              <option>Auburn</option>
-              <option>Red</option>
-              <option>Dark Blonde</option>
-              <option>Blonde</option>
-              <option>Platinum</option>
-              <option>Silver</option>
-              <option>White</option>
-            </select>
-
-          </div>
-
-
-          <div>
-
-            <label for="hairStyle">
-              Hair Style
-            </label>
-
-            <select id="hairStyle">
-              <option value="">Choose...</option>
-              <option>Long and straight</option>
-              <option>Long and wavy</option>
-              <option>Long and curly</option>
-              <option>Shoulder-length</option>
-              <option>Braided</option>
-              <option>Short and tousled</option>
-              <option>Close-cropped</option>
-              <option>Shaved</option>
-            </select>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="appearance-section">
-
-        <label for="feature">
-          Distinguishing Feature
-        </label>
-
-        <select id="feature">
-
-          <option value="">Choose...</option>
-
-          <option>None</option>
-
-          <option>Freckles</option>
-
-          <option>A scar through one eyebrow</option>
-
-          <option>A scar across the cheek</option>
-
-          <option>Several battle scars</option>
-
-          <option>Dark rune tattoos</option>
-
-          <option>Floral tattoos</option>
-
-          <option>Multiple ear piercings</option>
-
-          <option>A small facial piercing</option>
-
-        </select>
-
-      </div>
-
-
-      <button id="beginTrials" class="main-button">
-        Begin the Trials
-      </button>
-
-      <button id="backToName" class="back-button">
-        ← Return to Name
-      </button>
-
+      <button id="beginTrials" class="main-button">Begin the Trials</button>
+      <button id="backToName" class="back-button">← Return to Bloodline</button>
       <div id="appearanceMessage"></div>
-
     </div>
-
   </section>
 
 
@@ -1608,7 +1322,7 @@
 
 <!-- ========== THE CHOOSING ========== -->
 <section id="choosingScreen"><div class="trial-container"><div class="trial-number">THE CHOOSING</div><h2 class="trial-title">BOUND BY FIRE</h2><div class="trial-divider">◆</div><div id="choosingStory" class="trial-story"><p>The great doors open.</p><p>Dragons line the black stone terraces above you—bronze, crimson, ivory, midnight, storm-gray.</p><p>You were told riders came here to choose.</p><p>Another lie.</p><p>One by one, dragons turn their heads away.</p><p>Then the chamber changes.</p></div><button id="revealDragonButton" class="trial-continue">FACE YOUR DRAGON</button></div></section>
-<section id="dragonRevealScreen"><div class="trial-container"><div class="trial-number">THE BOND</div><h2 class="trial-title">YOU HAVE BEEN CHOSEN</h2><div class="trial-divider">◆</div><img id="dragonPortrait" class="dragon-portrait" alt="Your dragon"><div id="dragonName" class="reveal-name"></div><div id="dragonType" class="reveal-type"></div><div id="dragonRevealStory" class="trial-story"></div><div class="trial-whisper">You don't choose your dragon. Your choices do.</div><button id="restartGame" class="trial-continue">BEGIN ANOTHER FATE</button></div></section>
+<section id="dragonRevealScreen"><div class="trial-container"><div class="trial-number">THE BOND</div><h2 class="trial-title">YOU HAVE BEEN CHOSEN</h2><div class="trial-divider">◆</div><img id="dragonPortrait" class="dragon-portrait" alt="Your dragon"><div id="dragonName" class="reveal-name"></div><div id="dragonType" class="reveal-type"></div><div id="dragonRevealStory" class="trial-story"></div><div class="trial-whisper">Your blood may shape you. Your choices will reveal you. Your dragon will choose you...</div><button id="restartGame" class="trial-continue">BEGIN ANOTHER FATE</button></div></section>
 
   <script>
 
@@ -1673,31 +1387,7 @@ let selectedNameGender = "neutral";
 
     const pronounButtons =
       document.querySelectorAll(".pronoun");
-
-    const buildButtons =
-      document.querySelectorAll(".build");
-
-    const riderBaseImage =
-    document.getElementById("riderBaseImage");
-
-    const skinTone =
-      document.getElementById("skinTone");
-    
-    let selectedSkinTone = "";
-
-    const eyeColor =
-      document.getElementById("eyeColor");
-
-    const hairColor =
-      document.getElementById("hairColor");
-
-    const hairStyle =
-      document.getElementById("hairStyle");
-
-    const feature =
-      document.getElementById("feature");
-
-    const beginTrials =
+const beginTrials =
       document.getElementById("beginTrials");
 
     const backToName =
@@ -1710,17 +1400,11 @@ let selectedNameGender = "neutral";
     /* ---------- RIDER DATA ---------- */
 
     const rider = {
-    name: "",
-    bloodline: "",
-    shifterType: "",
-    pronouns: "",
-    build: "",
-    skinTone: "",
-    eyes: "",
-    hairColor: "",
-    hairStyle: "",
-    feature: ""
-};
+      name: "",
+      bloodline: "",
+      shifterType: "",
+      pronouns: ""
+    };
 
 
     /* ---------- TITLE ---------- */
@@ -2047,49 +1731,12 @@ continueToAppearanceFromBloodline.addEventListener("click", function() {
       "pronouns"
     );
 
-    makeSingleChoice(
-      buildButtons,
-      "build"
-    );
-
-    /* ---------- LIVE RIDER BUILD PREVIEW ---------- */
-
-buildButtons.forEach(function(button) {
-
-    button.addEventListener("click", function() {
-
-        const selectedBuild = button.dataset.value;
-
-        const buildImages = {
-            slight: "riders/female/bases/female-slight.png",
-            athletic: "riders/female/bases/female-athletic.png",
-            broad: "riders/female/bases/female-broad.png",
-            curvy: "riders/female/bases/female-curvy.png"
-        };
-
-        if (buildImages[selectedBuild]) {
-            riderBaseImage.src = buildImages[selectedBuild];
-        }
-
-    });
-
-});
-/* ---------- LIVE RIDER SKIN TONE PREVIEW ---------- */
-
-skinTone.addEventListener("change", function() {
-
-    selectedSkinTone = skinTone.value;
-
-    rider.skinTone = selectedSkinTone;
-
-});
-
     /* ---------- BACK ---------- */
 
     backToName.addEventListener("click", function() {
 
       appearanceScreen.style.display = "none";
-      nameScreen.style.display = "flex";
+      bloodlineScreen.style.display = "flex";
 
       window.scrollTo(0, 0);
 
@@ -2100,42 +1747,13 @@ skinTone.addEventListener("change", function() {
 
     beginTrials.addEventListener("click", function() {
 
-      rider.skinTone =
-        skinTone.value;
-
-      rider.eyes =
-        eyeColor.value;
-
-      rider.hairColor =
-        hairColor.value;
-
-      rider.hairStyle =
-        hairStyle.value;
-
-      rider.feature =
-        feature.value;
-
-
-      if (
-        rider.pronouns === "" ||
-        rider.build === "" ||
-        rider.skinTone === "" ||
-        rider.eyes === "" ||
-        rider.hairColor === "" ||
-        rider.hairStyle === "" ||
-        rider.feature === ""
-      ) {
-
+      if (rider.pronouns === "") {
         appearanceMessage.textContent =
-          "Finish shaping your rider before entering the trials.";
-
+          "Choose how the Academy should address your rider before entering the trials.";
         return;
-
       }
 
-
-      /* Save complete rider */
-
+      /* Save rider identity */
       localStorage.setItem(
         "boundByFireRider",
         JSON.stringify(rider)
